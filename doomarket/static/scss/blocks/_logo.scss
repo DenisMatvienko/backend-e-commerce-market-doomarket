@@ -1,0 +1,20 @@
+/* Logo start */
+
+.logo {
+	color: $c-txt;
+	font-family: 'Mr Dafoe', cursive;
+	font-size: 22px;
+	font-weight: 900;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 1.76px;
+
+		&:hover {
+		color: $blue;
+		transition: 0.2s color ease-in;
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+
+/* Logo end */

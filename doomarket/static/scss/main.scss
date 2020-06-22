@@ -1,0 +1,95 @@
+// import base
+//------------------//
+
+@import "./base/base";
+
+@import "./base/variables";
+
+
+// import blocks
+//------------------//
+
+//import logo
+@import "./blocks/_logo";
+
+// import button-up to top
+@import "./blocks/_button-up";
+
+// import header
+@import "./blocks/_header";
+
+// import castom select
+@import "./blocks/_header-select-dropdown-castom";
+
+// import buttons after select
+@import "./blocks/_header-link";
+
+// import navigation under header
+@import "./blocks/_header-nav";
+
+// import mega menu into navigation
+@import "./blocks/_header-mega-menu-link";
+
+// import drodown in nav
+@import "./blocks/_nav-dropdown";
+
+// import carousel under header
+@import "./blocks/_carousel";
+
+// import carousel styles
+@import "./blocks/_carousel-theme";
+
+// import promo section
+@import "./blocks/_promo-section";
+
+// import promo section - Items
+@import "./blocks/_promo-section-item";
+
+// import main content in page
+@import "./blocks/_main";
+
+// import navigation-sidebar
+@import "./blocks/_navigation";
+
+// import infoblock under left sidebar
+@import "./blocks/_infoblock";
+
+// import tabs plate
+@import "./blocks/_tabs";
+
+// import Cards Product-list
+@import "./blocks/_card";
+
+// import footer
+@import "./blocks/_footer.scss";
+
+// import navigation in footer
+@import "./blocks/_nav-footer";
+
+// import social icons
+@import "./blocks/_social";
+
+// import copyright info in footer
+@import "./blocks/_copyright";
+
+// import payment info in footer
+@import "./blocks/_payments";
+
+// import wish-list
+@import "./blocks/_wish-list";
+
+// import adaptive media
+@import "./blocks/_media-adaptive.scss";
+
+// import create sign in page
+@import "./blocks/_sign-in.scss";
+
+// import product cart
+@import "./blocks/_product-detail.scss";
+
+
+
+
+// import mixins
+//------------------//
+@import "./mixins/_card";

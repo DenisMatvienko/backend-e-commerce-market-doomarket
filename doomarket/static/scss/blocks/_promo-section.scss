@@ -1,0 +1,17 @@
+/* Promo sections container start */
+
+.container {
+	
+}
+
+.promo-section__row{
+	display: flex;
+	justify-content: space-between;
+}
+
+.promo-section__col {
+	min-width: 390px;
+	border-radius: 5px;
+}
+
+/* Promo sections container end */

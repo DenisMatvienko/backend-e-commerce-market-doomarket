@@ -1,0 +1,27 @@
+/* Socials-links in footer start */
+
+.social {
+	display: flex;
+	align-items: center;
+}
+
+.social__item {
+	display: inline-block;
+	width: 25px;
+
+	& + & {
+		margin-left: 36px;
+	}
+
+	svg {
+		fill: $dc-txt;
+	
+
+		&:hover {
+		fill: $blue;
+		transition: 0.2s fill ease-in;
+		}
+	}
+}
+
+/* Socials-links in footer end */

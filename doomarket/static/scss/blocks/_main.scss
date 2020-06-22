@@ -1,0 +1,25 @@
+/* Main start */
+
+.main-content {
+
+}
+
+.main__row {
+	display: flex;
+}
+
+.main__column-left {
+	width: 255px;
+	flex-shrink: 0px;
+	margin-right: 30px;
+
+	& > * + * {
+		margin-top: 29px;
+	}
+}
+
+.main__column-right {
+	flex-grow: 1;
+}
+
+/* Main start */

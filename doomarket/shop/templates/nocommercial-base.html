@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>{{ product.name }}</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<link rel="stylesheet" href="{% static 'libs/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css' %}">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
+	</head>
+<body>
+	{% include 'include/header.html' %}
+	{% include 'include/tabs-product-card.html' %}
+	{% block product-content %}
+		
+	{% endblock product-content %}
+	{% include 'include/button-up.html' %}	
+	{% include 'include/footer.html' %}
+
+	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'libs/OwlCarousel2-2.3.4/dist/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+

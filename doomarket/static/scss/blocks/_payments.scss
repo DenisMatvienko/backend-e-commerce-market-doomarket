@@ -1,0 +1,40 @@
+/* Payment info into footer start */
+
+.payments {
+	display: flex;
+	align-items: center;
+	height: 150px
+}
+
+.payments__text {
+	margin-right: 30px;
+	color: $dc-txt;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+
+	&:hover {
+		color: $blue;
+		transition: 0.2s color ease-in;
+		cursor: default;
+	}
+}
+
+.payments__icons {
+	display: flex;
+	align-items: center;
+}
+
+.payments__icon {
+	transition: transform 0.2s ease-in;
+
+	& + & {
+		margin-left: 20px;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+	}
+}
+
+/* Payment info into footer end */

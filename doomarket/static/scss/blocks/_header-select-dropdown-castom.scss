@@ -1,0 +1,107 @@
+/* Header  - castom dropdown select start */
+.header-select {
+	position: relative;
+	width: 250px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	&:hover{
+		background-color: #303030;
+
+		svg {
+			fill: $blue;
+			transition: 0.2s fill ease-in;
+		}
+
+		.header-select__title {
+			color: $blue;
+			transition: 0.2s color ease-in;
+		}
+	}
+}
+
+.header-select__title {
+	position: relative;
+	width: 100px;
+	color: $c-txt;
+	font-size: 10px;
+	font-weight: 900;
+	line-height: 1;
+	text-transform: uppercase;
+	letter-spacing: 1.25px;
+
+	&::after {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+		content: "";
+		display: block;
+		width: 9px;
+		height: 6px;
+	}
+}
+
+.header-select__dropdown {
+	width: 286px;
+	position: absolute;
+	top: 100%;
+	left: -100px;
+	right: -48px;
+	border-top: $border;
+	border-right: $border;
+	border-left: $border;
+	border-radius: 0 0 4px 4px;
+	background-color: $main_bgc;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 50);
+	z-index: 9;
+}
+
+
+
+.header-select__dropdown-item {
+	height: 50px;
+	width: 282px;
+	color: $c-txt;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	padding-left: 20px;
+	display: flex;
+	align-items: center;
+	border-bottom: $border;
+	&:last-child {
+		border-bottom: none;
+	}
+	&:hover {
+		color: $blue;
+		background-color: #303030;
+		transition: 0.2s color ease-in;
+	}
+}
+
+.header-select.header-select--nav {
+	width: 135px;
+	padding-left: 28px;
+	padding-right: 28px;
+	&:hover {
+		background-color: #303030;
+	}
+	.header-select__title {
+		width: auto;
+		color: $c-txt;
+		font-size: 14px;
+		text-transform: none;
+		font-weight: 500;
+		line-height: 1;
+		padding-right: 20px;
+		&:hover {
+			color: $blue;
+		}
+	}
+}
+
+/* Header  - castom dropdown select end */

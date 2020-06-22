@@ -1,0 +1,42 @@
+/* Tabs links on categories & products start */
+
+.tabs {
+	@extend %mixin-card;
+	padding: 0px 40px;
+	display: flex;
+	margin-right: 10px;
+	height: 60px;
+	margin-bottom: 29px;
+	transition: box-shadow 0.1s ease-in, transform 0.2s ease-in;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+		background-color: #303030;
+
+		.tabs__icon-arrow {
+			fill: $blue;
+		}
+	}	
+}
+
+.tabs__link {
+	height: 100%;
+	padding-top: 20px;
+	color: $dc-txt;
+	& + * {
+		margin-left: 8px;
+	}
+
+	* + & {
+		margin-left: 8px;
+	}
+}
+
+.tabs__icon-arrow {
+	padding-top: 20px;
+	fill: $c-txt;
+}
+
+
+/* Tabs links on categories & products end */

@@ -1,0 +1,68 @@
+/* Navigation start */
+
+.navigation {
+	@extend %mixin-card;
+	width: 210px;
+}
+
+.navigation__list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.navigation__item {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	border-radius: 3px;
+	transition: box-shadow 0.1s ease-in, transform 0.2s ease-in;
+
+	&:not(:last-child) {
+		border-bottom: $border;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+		background-color: #303030;
+		border-radius: 3px;
+		cursor: pointer;
+
+		svg {
+			fill: $blue;
+			transition: 0.2s fill ease-in;
+		}
+
+		.navigation__item-title{
+			color: $blue;
+			transition: 0.2s color ease-in;
+		}
+	}
+}
+
+.navigation__item-icon {
+	flex-shrink: 0;
+	fill: $dc-txt;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 56px;
+	margin-right: 1px;
+}
+
+.navigation__item-title {
+	color: $dc-txt;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.navigation__item-arrow {
+	fill: #4D4D4D;
+	margin-left: auto;
+	padding-right: 20px;
+}
+
+/* Navigation end */

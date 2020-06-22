@@ -1,0 +1,54 @@
+/* button on top start */
+
+.button__to-top {
+	position: fixed;
+	right: 50px;
+	bottom: 200px;
+	width: 70px;
+	height: 70px;
+	border: 1px solid $c-txt;
+	border-radius: 50%;
+	background-color: $dc-txt;
+	opacity: 0.2;
+	transition: box-shadow 0.2s ease-in;
+	z-index: 9;
+	display: none;
+
+	&:hover,
+	&:focus {
+		border: 1px solid $c-txt;
+		background-color: $blue;
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+		transition: 0.2s background-color ease-in;
+		opacity: 0.5;
+		filter: brightness(1.5);
+		outline: none;
+	}
+	
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&::before {
+		width: 5px;
+		height: 25px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		background-color: $c-txt;
+	}
+
+	&::after {
+		width: 15px;
+		height: 15px;
+		transform: translate(-50%, -50%) rotate(45deg);
+		border-top: 5px solid $c-txt;
+		border-left: 5px solid $c-txt;
+	}
+}
+
+/* button on top end */

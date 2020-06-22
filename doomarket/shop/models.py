@@ -1,13 +1,20 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 from transliterate import translit, get_available_language_codes
 from time import time
 
+"""
+    1) ДОБАВИТЬ ПОЛЕ АРТИКУЛОВ В ПРОДУКТ, 
+
+"""
+
 
 def gen_slug(s):
     """
-     Генерация слага из title (если title на русском, делается транслит), prepopulated_field не дает нужной
-     уникальности по сравнению с этой функцией
+     Generation slug from 'title'-field (if 'title' on russian language- field transliterate),
+     not using 'prepopulated_field' cause did't have more unique things like in it def
+
      """
     transliterate_the = translit(s, 'ru', reversed=True)
     new_slug = slugify(transliterate_the)
@@ -15,7 +22,7 @@ def gen_slug(s):
 
 
 class Category(models.Model):
-    """Категории товаров"""
+    """Category of products"""
     name = models.CharField('Название категории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -34,7 +41,7 @@ class Category(models.Model):
 
 
 class Subcategory(models.Model):
-    """Подкатегории товаров"""
+    """Subcategory of products"""
     name = models.CharField('Название подкатегории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -54,7 +61,7 @@ class Subcategory(models.Model):
 
 
 class Brand(models.Model):
-    """Бренды"""
+    """Brands"""
     name = models.CharField('Название бренда', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -73,7 +80,7 @@ class Brand(models.Model):
 
 
 class Collection(models.Model):
-    """Коллекции"""
+    """Collections"""
     name = models.CharField('Название коллекции', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -92,7 +99,7 @@ class Collection(models.Model):
 
 
 class Product(models.Model):
-    """Товары"""
+    """Products"""
     name = models.CharField('Название продукта', max_length=250, db_index=True)
     brand = models.ForeignKey(Brand, verbose_name='Бренд', on_delete=models.SET_NULL, null=True)
     collection = models.ForeignKey(Collection, verbose_name='Коллекция', on_delete=models.SET_NULL, null=True)
@@ -117,6 +124,9 @@ class Product(models.Model):
             models.Index(fields=['id', 'slug']),
         ]
 
+    def get_absolute_url(self):
+        return reverse('product-detail', kwargs={'slug': self.slug})
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.name)
@@ -124,7 +134,7 @@ class Product(models.Model):
 
 
 class Property(models.Model):
-    """Свойства товаров, технические характеристики"""
+    """Properties of products, tech-info"""
     product = models.ManyToManyField(Product, verbose_name='Продукт')
     name = models.CharField('Свойство', max_length=200, db_index=True)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
@@ -148,7 +158,7 @@ class Property(models.Model):
 
 
 class ProductImg(models.Model):
-    """ Список из фотографий товара находящийся под основной фотографией в карточке """
+    """ Photo-list of products, location under the main photo """
     product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE)
     name = models.CharField('Заголовок', max_length=100)
     image = models.ImageField('Изображение', upload_to='product_img/')

@@ -1,0 +1,147 @@
+/* Wish list start */
+
+.wishlist__block {
+	display: block;
+	background-color: $back-bgc;
+	height: 730px;
+	width: 100%;
+	top: 180px;
+	left: -45px;
+	margin-bottom: 100px;
+	padding: 0px 15px;
+	z-index: 2;
+}
+
+.container__title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.wishlist__title {
+	color: $c-txt;
+	font-size: 30px;
+	font-weight: 900;
+	line-height: 2;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding-left: 50px;
+	margin-bottom: 20px;
+
+	&:hover {
+		color: $blue;
+		transition: 0.2s color ease-in;
+		text-decoration: none;
+		cursor: default;
+	}
+}
+
+.wishlist__block-wrapper {
+	display: flex;
+	overflow: auto;
+	width: 100%;
+	padding: 50px 41px 38px 26px;
+	background-color: $main_bgc;
+	margin: 15px 0px;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+	height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: $dc-txt;
+	border-radius: 25px;
+	transition: box-shadow 0.1s ease-in, transform 0.2s ease-in, background-color 0.2s ease-in;
+
+	&:hover {
+		background-color: $blue;
+		transform: translateY(-4px);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+	}
+}
+
+.wishlist__container {
+	height: 550px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 100px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 30px 41px 100px 23px;
+
+	ol, ul {
+		li {
+			color: $c-txt;
+		}
+	}
+
+}
+
+.card__wishlist---margin {
+	margin-left: 2px;	
+	margin-bottom: 15px;
+}
+
+/* Wish list end */
+
+
+.brand__list {
+	width: 100%;
+
+	li {
+		list-style-type: none;
+		width: 1300px;
+	}
+}
+
+.brands__container {
+	display: flex;
+	justify-content: center;
+	border-radius: 5px;
+	padding: 20px 20px;
+	width: 100%;
+	transition: box-shadow 0.1s ease-in, transform 0.2s ease-in, color 0.2s ease-in;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 3px 10px rgba(24, 117, 240, 10);
+		background-color: $back-bgc;
+		cursor: pointer;
+	}
+
+	span {
+		font-size: 30px;
+		font-weight: 900;
+		line-height: 2;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: $c-txt;
+	}
+
+	input {
+		width: 1300px;
+	}
+
+}
+
+.brands__form {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	border-radius: 5px;
+	padding: 20px 20px;
+	width: 100%;
+	margin-bottom: 100px;
+	margin-top: 0;
+}
+
+.brand-form {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}

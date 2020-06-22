@@ -1,0 +1,51 @@
+/* Header link start */
+
+.header-link {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	color: $dc-txt;
+
+	&:not(:last-child) {
+		margin-right: 45px;
+	}
+
+	&:hover {
+		color: $blue;
+		text-decoration: none;
+		transition: 0.2s color ease-in;
+
+		.icon-svg {
+			fill: $blue;
+			transition: 0.2s fill ease-in;
+		}
+	}
+}
+
+.header-link__icon {
+	position: relative;
+	width: 21px;
+	height: 21px;
+	margin-right: 18px;
+}
+
+// Отображение синей точки над корзиной
+.header-link--notify .header-link__icon::after {
+	position: absolute;
+	top: -8px;
+	right: -7px;
+	content: "";
+	width: 6px;
+	height: 6px;
+	background-color: $blue;
+	border-radius: 50%;
+}
+
+.header-link__text {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1;
+	cursor: pointer;
+}
+
+/* Header link end */

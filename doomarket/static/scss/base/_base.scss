@@ -1,0 +1,35 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0px;
+	background-color: #1A1A1A;
+	font-family: 'Roboto', sans-serif;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+		color: #1875f0;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: inherit;
+	line-height: 1;
+}
+
+.container {
+	max-width: 1250px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.hidden {
+	display: none;
+}

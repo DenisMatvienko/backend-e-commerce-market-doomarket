@@ -1,0 +1,22 @@
+/* Footer start */
+
+.footer {
+	background-color: $main_bgc;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+}
+
+.footer__row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 50px;
+	padding-bottom: 52px;
+	height: 140px;
+}
+
+.footer__row--copyright {
+	padding-top: 40px;
+	padding-bottom: 49px;
+}
+
+/* Footer end */

@@ -1,0 +1,92 @@
+/* Nav-dropdowns start */
+/* dropdown-ы находящиеся группой в наве, логикой должны отличаться от поискового
+** поэтому отдельные стили и отдельная логика, для nav-а где списки изменения "языка",
+** "помощи", "контактов" */
+
+.nav-dropdown {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.nav-dropdown__title {
+    position: relative;
+    width: auto;
+    font-size: 13px;
+    color: $c-txt;
+    font-weight: 500;
+    line-height: 1;
+    padding-right: 20px;
+}
+
+.nav-dropdown__title-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    content: "";
+    display: block;
+    width: 8px;
+    height: 5px;
+    font-size: 0;
+
+    svg {
+        fill: $c-txt;
+    }
+}
+
+.nav-dropdown__dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -100px;
+    right: -2px;
+    border-right: $border;
+    border-left: $border;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 50);
+    border-radius: 0 0 4px 4px;
+    background-color: $main_bgc;
+    z-index: 9;
+}
+
+.nav-dropdown:hover {
+    .nav-dropdown__title {
+        color: $blue;
+        transition: 0.2s color ease-in;
+    }
+    svg {
+        fill: $blue;
+        transition: 0.2s fill ease-in;
+    }
+    .nav-dropdown__dropdown {
+        display: block;
+    }
+}
+
+a.nav-dropdown__dropdown-item {
+    height: 40px;
+    color: $c-txt;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+    padding-left: 28px;
+    display: flex;
+    align-items: center;
+    border-bottom: $border;
+    &:last-child {
+        border-bottom: none;
+    }
+    &:hover {
+    	color: $blue;
+        transition: 0.2s color ease-in;
+        background-color: #303030;
+    }
+}
+
+/* Nav-dropdowns end */

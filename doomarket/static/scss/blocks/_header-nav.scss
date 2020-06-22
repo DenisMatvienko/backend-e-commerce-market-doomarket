@@ -1,0 +1,62 @@
+/* Header - nav start */
+
+@media (min-width: 1190px) {
+	.header-nav {
+		border-left: $border;
+		border-right: $border;
+		display: flex;
+		width: 1200px;
+		margin: 0 auto;
+		height: 45px;
+	}
+
+
+	.header-nav__categories{
+		border-right: $border;
+		width: 210px;
+	}
+
+	.header-nav__deals {
+		width: 600px;
+		border-right: $border;
+		background-color: $main_bgc;
+		padding-left: 38px;
+		padding-right: 38px;
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
+	}
+
+	.header-nav__link {
+		color: $c-txt;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 1;
+		text-decoration: none;
+
+		&:not(:last-child) {
+			margin-right: 70px;
+		}
+
+		&:hover {
+			color: $blue;
+			transition: 0.2s color ease-in;
+			text-decoration: none;
+		}
+	}
+
+	.header-nav__dropdowns {
+		display: flex;
+	}
+
+	.header-nav__dropdowns-item {
+		&:not(:last-child) {
+			border-right: $border;
+		}
+	}
+
+	.header-nav__categories{
+		display: flex;
+	}
+}
+/* Header - nav end */

@@ -1,0 +1,72 @@
+/* Banners infoblock start */
+
+.info-block {
+	@extend %mixin-card;
+	padding: 30px 20px;
+	height: 366px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: box-shadow 0.1s ease-in, transform 0.2s ease-in;
+
+	// Отступ вниз до footer-a
+	&:last-child {
+		margin-bottom: 160px;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 3px 10px rgba(0, 0, 0, 50);
+		cursor: pointer;
+
+		.info-block__title {
+			color: $blue;
+			transition: 0.2s color ease-in;
+		}
+
+		.info-block__subtitle {
+			color: $blue;
+			transition: 0.2s color ease-in;
+		}
+	}
+}
+
+.info-block__title {
+	margin-bottom: 15px;
+	color: $c-txt;
+	font-style: 20px;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.info-block__subtitle {
+	color: $dc-txt;
+	font-style: 14px;
+	font-weight: 500;
+	line-height: 2;
+}
+
+.info-block--background-img {
+	background-color: $main_bgc;
+	background-image: url("./../img/banner/game-pc.jpg");
+	background-size: cover;
+
+	&:hover {
+		background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 100%),
+		url("./../img/banner/game-pc.jpg");
+	}
+}
+
+.info-block--background-img_2 {
+	background-color: $main_bgc;
+	background-image: url("./../img/banner/cell-phones.jpg");
+	background-size: cover;
+
+	&:hover {
+		background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.01) 100%),
+		url("./../img/banner/cell-phones.jpg");
+	}
+}
+
+/* Banners infoblock end */
