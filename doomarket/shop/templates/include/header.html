@@ -112,12 +112,9 @@
 					<div class="nav-categories__dropdown">
 							<div class="nav-categories">
 								<div class="column">
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
-									<a href="#" class="nav-categories__dropdown-category">Категория</a>
+									{% for category in view.get_category %}
+										<a href="#" class="nav-categories__dropdown-category">{{ category.name }}</a>
+									{% endfor %}
 								</div>
 							</div>
 					</div>

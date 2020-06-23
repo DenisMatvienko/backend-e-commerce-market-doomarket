@@ -5,7 +5,16 @@ from django.views.generic.base import View
 from .models import *
 
 
-class ProductListView(ListView):
+class CategorySubcategory:
+    def get_category(self):
+        """ Get list of category on main page filter """
+        return Category.objects.all()
+
+    def get_property(self):
+        return Property.objects.filter()
+
+
+class ProductListView(ListView, CategorySubcategory):
     """
     List of Products in main page
     1) Should change the name of template on 'movie_list' cause class take the link of 'model' and after that
@@ -15,7 +24,12 @@ class ProductListView(ListView):
     queryset = Product.objects.filter(available=True)
 
 
-class ProductDetailView(DetailView):
+# class CategoryListView(ListView, CategorySubcategory):
+#     model = Product
+#     queryset = Product.objects.filter(category=)
+
+
+class ProductDetailView(DetailView, CategorySubcategory):
     """ Product card with tech, photo, buy, description info"""
     model = Product
     slug_field = 'slug'
