@@ -101,44 +101,8 @@ class Collection(models.Model):
         verbose_name_plural = 'Коллекции'
 
 
-class Product(models.Model):
-    """Products"""
-    name = models.CharField('Название продукта', max_length=250, db_index=True)
-    brand = models.ForeignKey(Brand, verbose_name='Бренд', on_delete=models.SET_NULL, null=True)
-    collection = models.ForeignKey(Collection, verbose_name='Коллекция', on_delete=models.SET_NULL, null=True)
-    slug = models.SlugField(max_length=50, unique=True, db_index=True)
-    description = models.TextField('Описание')
-    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
-    available = models.BooleanField('Наличие товара', default=True)
-    created = models.DateTimeField('Дата и время создания товара', auto_now_add=True)
-    updated = models.DateTimeField('Дата и время последнего изменения', auto_now_add=True)
-    title_img = models.ImageField('Изображение', upload_to='products/')
-    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
-    subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('-updated',)
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукты'
-        indexes = [
-            models.Index(fields=['id', 'slug']),
-        ]
-
-    def get_absolute_url(self):
-        return reverse('product-detail', kwargs={'slug': self.slug})
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = gen_slug(self.name)
-        super().save(*args, **kwargs)
-
-
 class Property(models.Model):
     """Properties of products, tech-info"""
-    product = models.ManyToManyField(Product, verbose_name='Продукт')
     name = models.CharField('Свойство', max_length=200, db_index=True)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     data = models.CharField('Значение', max_length=200, unique=True)
@@ -158,6 +122,42 @@ class Property(models.Model):
         indexes = [
             models.Index(fields=['id', 'slug']),
         ]
+
+
+class Product(models.Model):
+    """Products"""
+    name = models.CharField('Название продукта', max_length=250, db_index=True)
+    brand = models.ForeignKey(Brand, verbose_name='Бренд', on_delete=models.SET_NULL, null=True)
+    collection = models.ForeignKey(Collection, verbose_name='Коллекция', on_delete=models.SET_NULL, null=True)
+    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+    description = models.TextField('Описание')
+    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
+    available = models.BooleanField('Наличие товара', default=True)
+    created = models.DateTimeField('Дата и время создания товара', auto_now_add=True)
+    updated = models.DateTimeField('Дата и время последнего изменения', auto_now_add=True)
+    title_img = models.ImageField('Изображение', upload_to='products/')
+    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
+    subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
+    properties = models.ManyToManyField(Property, verbose_name='свойство', related_name='property')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('-updated',)
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
+        indexes = [
+            models.Index(fields=['id', 'slug']),
+        ]
+
+    def get_absolute_url(self):
+        return reverse('product-detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = gen_slug(self.name)
+        super().save(*args, **kwargs)
 
 
 class ProductImg(models.Model):

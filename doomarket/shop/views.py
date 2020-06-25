@@ -10,9 +10,6 @@ class CategorySubcategory:
         """ Get list of category on main page filter """
         return Category.objects.all()
 
-    def get_property(self):
-        return Property.objects.filter()
-
 
 class ProductListView(ListView, CategorySubcategory):
     """
