@@ -20,14 +20,9 @@
 			<span class="product__article">ZRU9302809</span>
 			<img src="{{ product.title_img.url }}" class="product__img">
 			<div class="img-list__container">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
+				{% for image in product.productimg_set.all %}
+					<img src="{{ image.image.url }}" class="list-img" alt="{{  image.name}}">
+				{% endfor %}
 			</div>
 		</div>
 		<div class="info__container">
@@ -36,7 +31,13 @@
 					<li class="product__description-min-list-title">
 						<h3>Коротко о товаре</h3>
 					</li>
-					{% for property in product.properties.all %}
+					<li class="product__description-min-list-content top-cut">
+						<span>Бренд: {{ product.brand }}</span>
+					</li>
+					<li class="product__description-min-list-content top-cut">
+						<span>Коллекция: {{ product.collection }}</span>
+					</li>
+					{% for property in view.get_properties %}
 						<li class="product__description-min-list-content top-cut">
 							<span>{{ property.alias }}: {{ property.data }}</span>
 						</li>
@@ -58,10 +59,16 @@
 						<a name="read"><h3>Характеристики товара</h3></a>
 					</li>
 				</ul>
-				<ul class="product__description-min-list bot-full">
-					{% for properties in properties_list %}
+				<ul class="bot-full">
+					<li class="product__description-min-list-content">
+						<span>Бренд: {{ product.brand }}</span>
+					</li>
+					<li class="product__description-min-list-content">
+						<span>Коллекция: {{ product.collection }}</span>
+					</li>
+					{% for property in product.properties.all %}
 						<li class="product__description-min-list-content">
-							<span>{{ properties.alias }}:{{ properties.data }}</span>
+							<span>{{ property.alias }}: {{ property.data }}</span>
 						</li>
 					{% endfor %}
 				</ul>

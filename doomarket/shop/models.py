@@ -26,6 +26,7 @@ class Category(models.Model):
     name = models.CharField('Название категории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='category_icon/')
 
     def __str__(self):
         return self.name
@@ -49,6 +50,7 @@ class Subcategory(models.Model):
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
     category = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='subcategory_icon/')
 
     def __str__(self):
         return self.name

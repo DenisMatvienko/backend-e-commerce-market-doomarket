@@ -791,14 +791,18 @@ a.nav-dropdown__dropdown-item {
       color: #1875f0;
       transition: 0.2s color ease-in; }
 
+.mega-nav:not(:last-child) {
+  border-bottom: none; }
+
 .navigation__item-icon {
   flex-shrink: 0;
   fill: #4D4D4D;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 56px;
-  margin-right: 1px; }
+  width: 25px;
+  margin-right: 10px;
+  margin-left: 15px; }
 
 .navigation__item-title {
   color: #4D4D4D;
@@ -1743,7 +1747,7 @@ a.nav-dropdown__dropdown-item {
 @media (min-width: 1190px) {
   .product-continer {
     display: block;
-    height: 2400px;
+    height: 2800px;
     margin: 10px 139px;
     border-radius: 5px;
     background-color: #F5F5F5;
@@ -1908,8 +1912,9 @@ a.nav-dropdown__dropdown-item {
 
 .product__description {
   width: 950px;
+  word-wrap: break-word;
   text-align: center;
-  margin-left: 50px;
+  margin-left: 140px;
   margin-bottom: 300px;
   color: #4D4D4D; }
 
@@ -1950,7 +1955,7 @@ a.nav-dropdown__dropdown-item {
 
 .bot-full {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: left;
   height: 300px; }

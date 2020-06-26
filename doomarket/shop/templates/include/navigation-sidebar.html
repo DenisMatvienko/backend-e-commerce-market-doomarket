@@ -1,13 +1,14 @@
+{% load static %}
 <nav class="navigation">
 	<ul class="navigation__list">
 		{% for category in view.get_category %}
 			<li class="navigation__item">
-				<a href="#" class="navigation__item-icon">
-					<svg xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="2 1 22 20">
-						<path paint-order="stroke fill markers" fill-rule="evenodd" d="M22 15H3.999V3h18v12zm0-14H3.999c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H9v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2z"/>
-					</svg>
-				</a>
-				<div class="navigation__item-title">{{ category.name }}</div>
+				{% if category.icon_field %}
+				    <img src="{{ category.icon_field.url }}" class="navigation__item-icon">
+				{% else %}
+				   <img src="{% static 'img/nav-icons/d.png' %}" class="navigation__item-icon">
+				{% endif %}
+				<a href="/" class="navigation__item-title">{{ category.name }}</a>
 				<div class="navigation__item-arrow">
 					<svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="1.999 1 6.001 10">
 						<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>

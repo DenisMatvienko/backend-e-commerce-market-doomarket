@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Header start -->
 <header class="header">
 	<div class="header_container">
@@ -113,7 +114,18 @@
 							<div class="nav-categories">
 								<div class="column">
 									{% for category in view.get_category %}
-										<a href="#" class="nav-categories__dropdown-category">{{ category.name }}</a>
+										<li class="navigation__item mega-nav">
+											{% if category.icon_field %}
+											    <img src="{{ category.icon_field.url }}" class="navigation__item-icon">
+											{% else %}
+											   <img src="{% static 'img/nav-icons/d.png' %}" class="navigation__item-icon">
+											{% endif %}
+											<a href="/" class="navigation__item-title">{{ category.name }}</a>
+											<div class="navigation__item-arrow">
+												<svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="1.999 1 6.001 10">
+													<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
+												</svg>
+											</div>
 									{% endfor %}
 								</div>
 							</div>
