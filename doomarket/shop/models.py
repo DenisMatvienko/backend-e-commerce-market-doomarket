@@ -4,11 +4,6 @@ from django.utils.text import slugify
 from transliterate import translit, get_available_language_codes
 from time import time
 
-"""
-    1) ДОБАВИТЬ ПОЛЕ АРТИКУЛОВ В ПРОДУКТ, 
-
-"""
-
 
 def gen_slug(s):
     """
