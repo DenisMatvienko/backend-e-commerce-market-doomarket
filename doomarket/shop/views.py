@@ -14,7 +14,7 @@ class CategorySubcategory:
         product_object = Product.objects.all()
         for property in product_object:
             result = property.properties.all()
-        return result
+            return result
 
 
 class ProductListView(ListView, CategorySubcategory):
