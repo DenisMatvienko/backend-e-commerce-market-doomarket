@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
@@ -10,8 +10,11 @@ class CategorySubcategory:
         """ Get list of category on main page filter """
         return Category.objects.all()
 
-    def get_property(self):
-        return Property.objects.filter()
+    def get_properties(self):
+        product_object = Product.objects.all()
+        for property in product_object:
+            result = property.properties.all()
+        return result
 
 
 class ProductListView(ListView, CategorySubcategory):
@@ -24,14 +27,12 @@ class ProductListView(ListView, CategorySubcategory):
     queryset = Product.objects.filter(available=True)
 
 
-# class CategoryListView(ListView, CategorySubcategory):
-#     model = Product
-#     queryset = Product.objects.filter(category=)
-
-
 class ProductDetailView(DetailView, CategorySubcategory):
     """ Product card with tech, photo, buy, description info"""
     model = Product
     slug_field = 'slug'
+
+
+
 
 
