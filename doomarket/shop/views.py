@@ -10,15 +10,6 @@ class CategorySubcategory:
         """ Get list of category on main page filter """
         return Category.objects.all()
 
-<<<<<<< HEAD
-    def get_properties(self):
-        product_object = Product.objects.all()
-        for property in product_object:
-            result = property.properties.all()
-            return result
-
-=======
->>>>>>> properties
 
 class ProductListView(ListView, CategorySubcategory):
     """
@@ -34,6 +25,12 @@ class ProductDetailView(DetailView, CategorySubcategory):
     """ Product card with tech, photo, buy, description info"""
     model = Product
     slug_field = 'slug'
+
+
+class ProductCategoryView(ListView, CategorySubcategory):
+    model = Category
+    model_2 = Subcategory
+
 
 
 
