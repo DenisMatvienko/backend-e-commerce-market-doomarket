@@ -37,8 +37,8 @@
 					<li class="product__description-min-list-content top-cut">
 						<span>Коллекция: {{ product.collection }}</span>
 					</li>
-					{% for property in view.get_properties %}
-						<li class="product__description-min-list-content top-cut">
+					{% for property in product.properties.all %}
+					    <li class="product__description-min-list-content top-cut">
 							<span>{{ property.alias }}: {{ property.data }}</span>
 						</li>
 					{% endfor %}
@@ -54,7 +54,7 @@
 		<p class="product__description-title"><b>Описание:</b></p>
 			<p class="product__description">{{ product.description }}</p>
 			<div class="product-description__properties">
-				<ul class="product__description-min-list">
+				<ul class="product__description-min-list-bot">
 					<li class="product__description-min-list-title">
 						<a name="read"><h3>Характеристики товара</h3></a>
 					</li>

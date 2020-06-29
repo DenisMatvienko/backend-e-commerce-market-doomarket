@@ -1814,7 +1814,7 @@ a.nav-dropdown__dropdown-item {
 
 .product__description-title {
   margin-left: 100px;
-  margin-top: 350px;
+  margin-top: 280px;
   margin-bottom: 15px;
   text-align: center; }
 
@@ -1827,6 +1827,11 @@ a.nav-dropdown__dropdown-item {
   list-style: none;
   margin-top: 95px;
   margin-bottom: 20px; }
+
+.product__description-min-list {
+  overflow: hidden;
+  height: 410px;
+}
 
 .product__description-min-list-content {
   color: #A6A6A6;
