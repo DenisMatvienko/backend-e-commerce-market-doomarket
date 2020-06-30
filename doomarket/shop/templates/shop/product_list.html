@@ -26,7 +26,7 @@
 					</div>
 					<a href="{{ product.get_absolute_url }}">
 						<h4 class="card__title">
-							{{ product.subcategory }} {{ product.name }}
+							{{ product.subcategories|cut:"ы" }} {{ product.name }}
 						</h4>
 					</a>
 					<div class="card__footer">

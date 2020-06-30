@@ -26,9 +26,9 @@ class ProductImgAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'brand', 'subcategory', 'updated', 'id')
+    list_display = ('name', 'brand', 'subcategories', 'updated', 'id')
     list_display_links = ('name',)
-    list_filter = ('brand', 'subcategory', 'updated', 'price',)
+    list_filter = ('brand', 'subcategories', 'updated', 'price',)
     search_fields = ('name', 'price',)
     readonly_fields = ('slug',)
 

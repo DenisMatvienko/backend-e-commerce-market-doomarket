@@ -32,7 +32,7 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('category-list', kwargs={'slug': self.slug})
+        return reverse('product-category', kwargs={'slug': self.name})
 
     class Meta:
         verbose_name = 'Категория'
@@ -44,7 +44,7 @@ class Subcategory(models.Model):
     name = models.CharField('Название подкатегории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
-    category = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
+    categories = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
     icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='subcategory_icon/')
 
     def __str__(self):
@@ -133,8 +133,8 @@ class Product(models.Model):
     created = models.DateTimeField('Дата и время создания товара', auto_now_add=True)
     updated = models.DateTimeField('Дата и время последнего изменения', auto_now_add=True)
     title_img = models.ImageField('Изображение', upload_to='products/')
-    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
-    subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
+    categories = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
+    subcategories = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
     properties = models.ManyToManyField(Property, verbose_name='свойство', related_name='property')
 
     def __str__(self):
