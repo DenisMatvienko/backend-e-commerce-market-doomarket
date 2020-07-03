@@ -17,7 +17,7 @@
 					</button>
 				</div>
 			</div>
-			<span class="product__article">ZRU9302809</span>
+			<span class="product__article">{{ product.article }}</span>
 			<img src="{{ product.title_img.url }}" class="product__img">
 			<div class="img-list__container">
 				{% for image in product.productimg_set.all %}

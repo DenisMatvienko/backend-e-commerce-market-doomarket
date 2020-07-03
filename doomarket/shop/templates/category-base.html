@@ -5,40 +5,40 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>{{ product.name }}</title>
+		<title>{{ category.alias }} - купить {{ category.alias }} в Санкт-Петербурге </title>
 		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
 	</head>
-<body>
-	{% include 'include/header.html' %}
-	{% include 'include/tabs-product-card.html' %}
-	<main class="main-content">
-		<div class="container">
-			<div class="main__row">
-				<div class="main__column-left">
-                    {% include 'include/filter.html' %}
-					{% include 'include/navigation-sidebar.html' %}
-					{% include 'include/banner.html' %}
-				</div>
-				<div class="main__column-right">
-					{% block content %}
+	<body>
+		{% include 'include/header.html' %}
+		{% include 'include/tabs-category-detail.html' %}
+		<main class="main-content">
+			<div class="container">
+				<div class="main__row">
+					<div class="main__column-left">
+	                    {% include 'include/filter.html' %}
+						{% include 'include/navigation-sidebar.html' %}
+						{% include 'include/banner.html' %}
+					</div>
+					<div class="main__column-right">
+						{% block content %}
 
-					{% endblock content %}
+						{% endblock content %}
+					</div>
+					<!--/ .Cards  of Products main content end -->
 				</div>
-				<!--/ .Cards  of Products main content end -->
+				<!-- /.main__row -->
 			</div>
-			<!-- /.main__row -->
-		</div>
-		<!-- /.container -->
-	</main>
-	<!-- /.main-content -->
-	{% include 'include/button-up.html' %}
-	{% include 'include/footer.html' %}
+			<!-- /.container -->
+		</main>
+		<!-- /.main-content -->
+		{% include 'include/button-up.html' %}
+		{% include 'include/footer.html' %}
 
-	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
-	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
-	<script src="{% static 'js/button-up-to-top.js' %}"></script>
-</body>
+		<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+		<script src="{% static 'js/button-up-to-top.js' %}"></script>
+	</body>
 </html>
 

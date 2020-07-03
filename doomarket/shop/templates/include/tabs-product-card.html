@@ -1,12 +1,12 @@
 <!-- tabs start -->
 <div class="tabs tabs__product-detail">
-		<a href="/" class="tabs__link">Home</a>
+		<a href="{% url 'list'  %}" class="tabs__link">Home</a>
 			<div class="tabs__icon-arrow">
 				<svg xmlns="http://www.w3.org/2000/svg" width="7" height="20" viewBox="1.999 1 6.001 10">
 					<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
 				</svg>
 			</div>
-		<a href="#" class="tabs__link">{{ product.categories }}</a>
+				<a href="{{ product.categories.get_absolute_url }}" class="tabs__link">{{ product.categories }}</a>
 		<div class="tabs__icon-arrow">
 			<svg xmlns="http://www.w3.org/2000/svg" width="7" height="20" viewBox="1.999 1 6.001 10">
 				<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
