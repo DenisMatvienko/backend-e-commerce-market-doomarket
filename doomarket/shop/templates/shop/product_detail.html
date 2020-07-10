@@ -6,7 +6,7 @@
 	<div class="product-continer">
 		<div class="product__header">
 			<div class="title__container">
-				<h1 class="product__title">{{ product.subcategory }} {{ product.name }}</h1>
+				<h1 class="product__title">{{ product.subcategories }} {{ product.name }}</h1>
 				<div class="card__icon-btns icon__title">
 					<button class="card__icon-btn">
 						<svg width="21" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.366 21 19.268">
@@ -17,7 +17,7 @@
 					</button>
 				</div>
 			</div>
-			<span class="product__article">ZRU9302809</span>
+			<span class="product__article">{{ product.article }}</span>
 			<img src="{{ product.title_img.url }}" class="product__img">
 			<div class="img-list__container">
 				{% for image in product.productimg_set.all %}
