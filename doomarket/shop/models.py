@@ -47,6 +47,9 @@ class Subcategory(models.Model):
             self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('product-subcategory', kwargs={'slug': self.slug})
+
     class Meta:
         verbose_name = 'Подкатегория'
         verbose_name_plural = 'Подкатегории'
