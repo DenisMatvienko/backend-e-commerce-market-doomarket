@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import request
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
@@ -8,10 +9,18 @@ from .models import *
 class CategoryList:
     """
     The lists of objects on similar or different pages
-    1) get_category - Function which get list of "Category" objects on the pages
     """
     def get_category(self):
+        """ Get list categories on main page """
         return Category.objects.all()
+
+    def get_product_by_category(self):
+        """ Get list of products on of each category in category-detail """
+        return Product.objects.filter(categories__slug=self.kwargs.get('slug'))
+
+    def get_subcategory_by_category(self):
+        """ Get list of subcategories on of each category in category-detail """
+        return Subcategory.objects.filter(categories__slug=self.kwargs.get('slug'))
 
 
 class ProductListView(ListView, CategoryList):
@@ -37,11 +46,4 @@ class ProductDetailView(DetailView, CategoryList):
 class CategoryDetailView(DetailView, CategoryList):
     """ List of product which have relationship with categories """
     model = Category
-    template_name = 'shop/category_list.html'
-
-
-
-
-
-
-
+    template_name = 'shop/category_detail.html'

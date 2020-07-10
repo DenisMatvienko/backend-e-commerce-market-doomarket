@@ -16,15 +16,18 @@
 		<main class="main-content">
 			<div class="container">
 				<div class="main__row">
-					<div class="main__column-left">
-	                    {% include 'include/filter.html' %}
+					<div class="main__column-left category-detail-width">
+	                    {% include 'include/category-name-plate-in-category-detail.html' %}
+	                    	{% include 'include/os-filter.html' %}
+	                    	{% include 'include/width-filter.html' %}
+	                    	{% include 'include/color-filter.html' %}
 						{% include 'include/navigation-sidebar.html' %}
 						{% include 'include/banner.html' %}
 					</div>
 					<div class="main__column-right">
-						{% block content %}
+						{% block category-content %}
 
-						{% endblock content %}
+						{% endblock category-content %}
 					</div>
 					<!--/ .Cards  of Products main content end -->
 				</div>

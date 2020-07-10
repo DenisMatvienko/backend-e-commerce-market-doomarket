@@ -1,9 +1,9 @@
-{% extends 'shop/base.html' %}
-{% block content %}
+{% extends 'shop/category-base.html' %}
+{% block category-content %}
 	<!-- Cards Product-list start -->
 		<div class="cards-wrapper">
 			<!-- CARD START -->
-			{% for product in product_list %}
+			{% for product in view.get_product_by_category %}
 				<div class="card card__wishlist---margin">
 					<!-- Card Header start -->
 					<div class="card__header">
@@ -44,6 +44,4 @@
 			<!-- CARD END -->
 		</div>
 	<!-- Cards Product-list end -->
-{% endblock content %}	
-			
-
+{% endblock category-content %}
