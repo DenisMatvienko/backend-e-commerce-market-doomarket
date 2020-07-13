@@ -1,42 +1,26 @@
 from django.db import models
 from django.urls import reverse
-from django.utils.text import slugify
-from transliterate import translit, get_available_language_codes
-from time import time
-
-"""
-    1) ДОБАВИТЬ ПОЛЕ АРТИКУЛОВ В ПРОДУКТ, 
-
-"""
-
-
-def gen_slug(s):
-    """
-     Generation slug from 'title'-field (if 'title' on russian language- field transliterate),
-     not using 'prepopulated_field' cause did't have more unique things like in it def
-
-     """
-    transliterate_the = translit(s, 'ru', reversed=True)
-    new_slug = slugify(transliterate_the)
-    return new_slug + '' + str(int(time()))
+from .utils import gen_slug, gen_slug_clear
 
 
 class Category(models.Model):
-    """Category of products"""
+    """ Category of products """
     name = models.CharField('Название категории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='category_icon/')
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
+        """ Get 'name' to generate slug which calls transliterate -'name' """
         if not self.id:
-            self.slug = gen_slug(self.name)
+            self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('category-list', kwargs={'slug': self.slug})
+        return reverse('product-category', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Категория'
@@ -44,19 +28,24 @@ class Category(models.Model):
 
 
 class Subcategory(models.Model):
-    """Subcategory of products"""
+    """ Subcategory of products """
     name = models.CharField('Название подкатегории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
-    category = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
+    categories = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='subcategory_icon/')
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
+        """ Save generation slug """
         if not self.id:
-            self.slug = gen_slug(self.name)
+            self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('product-subcategory', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Подкатегория'
@@ -64,7 +53,7 @@ class Subcategory(models.Model):
 
 
 class Brand(models.Model):
-    """Brands"""
+    """ Brands """
     name = models.CharField('Название бренда', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -73,8 +62,9 @@ class Brand(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        """ Save generation slug """
         if not self.id:
-            self.slug = gen_slug(self.name)
+            self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -83,7 +73,7 @@ class Brand(models.Model):
 
 
 class Collection(models.Model):
-    """Collections"""
+    """ Collections """
     name = models.CharField('Название коллекции', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
@@ -92,8 +82,9 @@ class Collection(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        """ Save generation slug """
         if not self.id:
-            self.slug = gen_slug(self.name)
+            self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -101,11 +92,48 @@ class Collection(models.Model):
         verbose_name_plural = 'Коллекции'
 
 
+class Property(models.Model):
+    """ Properties of products, tech-info """
+    name = models.CharField('Свойство', max_length=200, db_index=True, unique=True)
+    alias = models.CharField('Алиас', max_length=200, db_index=True)
+    data = models.CharField('Значение', max_length=200)
+    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.data}'
+
+    def save(self, *args, **kwargs):
+        """ Save generation slug """
+        if not self.id:
+            self.slug = gen_slug(self.name)
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Свойства'
+        verbose_name_plural = 'Свойства'
+        indexes = [
+            models.Index(fields=['id', 'slug']),
+        ]
+
+
 class Product(models.Model):
-    """Products"""
+    """ Products in catalogue """
     name = models.CharField('Название продукта', max_length=250, db_index=True)
-    brand = models.ForeignKey(Brand, verbose_name='Бренд', on_delete=models.SET_NULL, null=True)
-    collection = models.ForeignKey(Collection, verbose_name='Коллекция', on_delete=models.SET_NULL, null=True)
+    brand = models.ForeignKey(
+        Brand,
+        verbose_name='Бренд',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='brands'
+    )
+    collection = models.ForeignKey(
+        Collection,
+        verbose_name='Коллекция',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='collections'
+    )
+    article = models.CharField('Артикул', max_length=250, db_index=True)
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
     description = models.TextField('Описание')
     price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
@@ -113,8 +141,21 @@ class Product(models.Model):
     created = models.DateTimeField('Дата и время создания товара', auto_now_add=True)
     updated = models.DateTimeField('Дата и время последнего изменения', auto_now_add=True)
     title_img = models.ImageField('Изображение', upload_to='products/')
-    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
-    subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
+    categories = models.ForeignKey(
+        Category,
+        verbose_name='Категория',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='categorys'
+    )
+    subcategories = models.ForeignKey(
+        Subcategory,
+        verbose_name='Подкатегория',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='subcategorys'
+    )
+    properties = models.ManyToManyField(Property, verbose_name='свойство', related_name='property')
 
     def __str__(self):
         return self.name
@@ -131,33 +172,10 @@ class Product(models.Model):
         return reverse('product-detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
+        """ Save generation slug """
         if not self.id:
             self.slug = gen_slug(self.name)
         super().save(*args, **kwargs)
-
-
-class Property(models.Model):
-    """Properties of products, tech-info"""
-    product = models.ManyToManyField(Product, verbose_name='Продукт')
-    name = models.CharField('Свойство', max_length=200, db_index=True)
-    alias = models.CharField('Алиас', max_length=200, db_index=True)
-    data = models.CharField('Значение', max_length=200, unique=True)
-    slug = models.SlugField(max_length=50, unique=True, db_index=True)
-
-    def __str__(self):
-        return self.name
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = gen_slug(self.name)
-        super().save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = 'Свойства'
-        verbose_name_plural = 'Свойства'
-        indexes = [
-            models.Index(fields=['id', 'slug']),
-        ]
 
 
 class ProductImg(models.Model):

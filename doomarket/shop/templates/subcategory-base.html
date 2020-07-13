@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>{{ subcategory.alias }} - купить {{ subcategory.alias }} в Санкт-Петербурге </title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		{% include 'include/header.html' %}
+		{% include 'include/tabs-subcategory-detail.html' %}
+		<main class="main-content">
+			<div class="container">
+				<div class="main__row">
+					<div class="main__column-left category-detail-width">
+	                    {% include 'include/subcategory-name-plate-in-category-detail.html' %}
+	                    	{% include 'include/sidebar_filters/os-filter.html' %}
+	                    	{% include 'include/sidebar_filters/width-filter.html' %}
+	                    	{% include 'include/sidebar_filters/color-filter.html' %}
+						{% include 'include/navigation-sidebar.html' %}
+						{% include 'include/banner.html' %}
+					</div>
+					<div class="main__column-right">
+						{% block subcategory-content %}
+
+						{% endblock subcategory-content %}
+					</div>
+					<!--/ .Cards  of Products main content end -->
+				</div>
+				<!-- /.main__row -->
+			</div>
+			<!-- /.container -->
+		</main>
+		<!-- /.main-content -->
+		{% include 'include/button-up.html' %}
+		{% include 'include/footer.html' %}
+
+		<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+		<script src="{% static 'js/button-up-to-top.js' %}"></script>
+	</body>
+</html>
+

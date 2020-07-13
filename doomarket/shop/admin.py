@@ -2,6 +2,11 @@ from django.contrib import admin
 from .models import *
 
 
+admin.site.site_header = 'Doomarket admin'
+admin.site.site_title = 'Doomarket admin'
+admin.site.index_title = 'Welcome to Doomarket admin'
+
+
 @admin.register(Property)
 class PropertyAdmin(admin.ModelAdmin):
     list_display = ('name', 'data', 'id',)
@@ -21,9 +26,9 @@ class ProductImgAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'brand', 'subcategory', 'updated',)
+    list_display = ('name', 'brand', 'subcategories', 'updated', 'id')
     list_display_links = ('name',)
-    list_filter = ('brand', 'subcategory', 'updated', 'price',)
+    list_filter = ('brand', 'subcategories', 'updated', 'price',)
     search_fields = ('name', 'price',)
     readonly_fields = ('slug',)
 

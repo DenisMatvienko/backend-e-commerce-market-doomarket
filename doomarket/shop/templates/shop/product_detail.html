@@ -6,7 +6,7 @@
 	<div class="product-continer">
 		<div class="product__header">
 			<div class="title__container">
-				<h1 class="product__title">{{ product.subcategory }} {{ product.name }}</h1>
+				<h1 class="product__title">{{ product.subcategories }} {{ product.name }}</h1>
 				<div class="card__icon-btns icon__title">
 					<button class="card__icon-btn">
 						<svg width="21" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.366 21 19.268">
@@ -17,17 +17,12 @@
 					</button>
 				</div>
 			</div>
-			<span class="product__article">ZRU9302809</span>
+			<span class="product__article">{{ product.article }}</span>
 			<img src="{{ product.title_img.url }}" class="product__img">
 			<div class="img-list__container">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
-				<img src="./img/cads-list/wallapares/samsung.jpg" class="list-img">
+				{% for image in product.productimg_set.all %}
+					<img src="{{ image.image.url }}" class="list-img" alt="{{  image.name}}">
+				{% endfor %}
 			</div>
 		</div>
 		<div class="info__container">
@@ -36,9 +31,15 @@
 					<li class="product__description-min-list-title">
 						<h3>Коротко о товаре</h3>
 					</li>
-					{% for properties in view.get_property %}
-						<li class="product__description-min-list-content top-cut">
-							<span>{{ properties.alias }}:{{ properties.data }}</span>
+					<li class="product__description-min-list-content top-cut">
+						<span>Бренд: {{ product.brand }}</span>
+					</li>
+					<li class="product__description-min-list-content top-cut">
+						<span>Коллекция: {{ product.collection }}</span>
+					</li>
+					{% for property in product.properties.all %}
+					    <li class="product__description-min-list-content top-cut">
+							<span>{{ property.alias }}: {{ property.data }}</span>
 						</li>
 					{% endfor %}
 				</ul>
@@ -53,15 +54,21 @@
 		<p class="product__description-title"><b>Описание:</b></p>
 			<p class="product__description">{{ product.description }}</p>
 			<div class="product-description__properties">
-				<ul class="product__description-min-list">
+				<ul class="product__description-min-list-bot">
 					<li class="product__description-min-list-title">
 						<a name="read"><h3>Характеристики товара</h3></a>
 					</li>
 				</ul>
-				<ul class="product__description-min-list bot-full">
-					{% for properties in properties_list %}
+				<ul class="bot-full">
+					<li class="product__description-min-list-content">
+						<span>Бренд: {{ product.brand }}</span>
+					</li>
+					<li class="product__description-min-list-content">
+						<span>Коллекция: {{ product.collection }}</span>
+					</li>
+					{% for property in product.properties.all %}
 						<li class="product__description-min-list-content">
-							<span>{{ properties.alias }}:{{ properties.data }}</span>
+							<span>{{ property.alias }}: {{ property.data }}</span>
 						</li>
 					{% endfor %}
 				</ul>
