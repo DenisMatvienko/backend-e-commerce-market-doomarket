@@ -22,9 +22,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('product-category', kwargs={'slug': self.slug})
 
-    # def get_product(self):
-    #     return self.product.filter(available=True)
-
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'

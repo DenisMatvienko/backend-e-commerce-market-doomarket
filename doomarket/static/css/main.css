@@ -1015,6 +1015,23 @@ a.nav-dropdown__dropdown-item {
   .icon__cart:hover {
     fill: #1875f0; }
 
+.empty-info {
+  margin-left: 130px;
+  margin-top: 200px;
+  text-transform: uppercase;
+  color: #A6A6A6;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0.2; }
+  .empty-info:hover {
+    color: #1875f0;
+    transition: 0.2s color, 0.2s opacity ease-in;
+    text-decoration: none;
+    opacity: 1;
+  }
+
 /* Cards of product end */
 /* Footer start */
 .footer {

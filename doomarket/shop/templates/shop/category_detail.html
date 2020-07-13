@@ -40,6 +40,8 @@
 						</button>
 					</div>	
 				</div>
+			{% empty %}
+				<p class="empty-info"> На данный момент, товар категории: "{{ category.alias }}" отсутствует :( </p>
 			{% endfor %}
 			<!-- CARD END -->
 		</div>
