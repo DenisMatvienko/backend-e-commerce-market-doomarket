@@ -1,9 +1,9 @@
-{% extends 'shop/bases/base.html' %}
-{% block content %}
+{% extends 'shop/bases/basis-base.html' %}
+{% block basis-content %}
 	<!-- Cards Product-list start -->
 		<div class="cards-wrapper">
 			<!-- CARD START -->
-			{% for product in product_list %}
+			{% for product in view.get_product_by_basis %}
 				<div class="card card__wishlist---margin">
 					<!-- Card Header start -->
 					<div class="card__header">
@@ -41,11 +41,9 @@
 					</div>	
 				</div>
 			{% empty %}
-				<p class="empty-info"> Товар на сайт еще не добавлен, просим прощения за неудобства. </p>
+				<p class="empty-info"> На данный момент, "{{ subcategory.alias }}" отсутствуют :( </p>
 			{% endfor %}
 			<!-- CARD END -->
 		</div>
 	<!-- Cards Product-list end -->
-{% endblock content %}	
-			
-
+{% endblock basis-content %}

@@ -1,4 +1,4 @@
-from .models import Product, Category, Subcategory
+from .models import Product, Category, Subcategory, Basis
 
 
 class CategoryList:
@@ -20,3 +20,11 @@ class CategoryList:
     def get_product_by_subcategory(self):
         """ Get list of products on of each subcategory in subcategory-detail """
         return Product.objects.filter(subcategories__slug=self.kwargs.get('slug'))
+
+    def get_basis_by_subcategory(self):
+
+        return Basis.objects.filter(subcategories__slug=self.kwargs.get('slug'))
+
+    def get_product_by_basis(self):
+
+        return Product.objects.filter(basis__slug=self.kwargs.get('slug'))

@@ -33,7 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
     readonly_fields = ('slug',)
 
 
-@admin.register(Category, Subcategory, Brand, Collection)
+@admin.register(Category, Subcategory, Brand, Collection, Basis)
 class DisplaysAdmin(admin.ModelAdmin):
     list_display = ('name', 'id',)
     list_display_links = ('name',)

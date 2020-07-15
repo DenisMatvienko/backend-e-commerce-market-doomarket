@@ -17,5 +17,10 @@
 		</li>
 	</ul>
 </nav>
+	<ul>
+		{% for basis in view.get_basis_by_subcategory %}
+			<a href="{{ basis.get_absolute_url }}"><li class="product__description-min-list-content subcategories-list">{{ basis.alias }}</li></a>
+		{% endfor %}
+	</ul>
 <hr>
 <!-- subcategory-list  end-->

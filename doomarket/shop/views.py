@@ -3,7 +3,7 @@ from django.http import request
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
-from .models import Product, Category, Subcategory
+from .models import Product, Category, Subcategory, Basis
 from shop.business import CategoryList
 
 
@@ -37,3 +37,9 @@ class SubcategoryDetailView(DetailView, CategoryList):
     """ List of product which have relationship with categories """
     model = Subcategory
     template_name = 'shop/subcategory_detail.html'
+
+
+class BasisDetailView(DetailView, CategoryList):
+    """ List of product which have relationship with categories """
+    model = Basis
+    template_name = 'shop/basis_detail.html'
