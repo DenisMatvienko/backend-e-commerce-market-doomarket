@@ -1,4 +1,4 @@
-from .models import Product, Category, Subcategory, Basis
+from .models.product import Product, Category, Subcategory, Basis
 
 
 class CategoryList:

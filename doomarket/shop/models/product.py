@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from .utils import gen_slug, gen_slug_clear
+from shop.utils import gen_slug, gen_slug_clear
 
 
 class Category(models.Model):
@@ -93,11 +93,15 @@ class Collection(models.Model):
         verbose_name_plural = 'Коллекции'
 
 
+class Data(models.Model):
+    value = models.CharField('value', max_length=200, db_index=True, unique=True)
+
+
 class Property(models.Model):
     """ Properties of products, tec-info """
     name = models.CharField('Свойство', max_length=200, db_index=True, unique=True)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
-    data = models.ManyToManyField(Data, verbose_name='Значение', related_name='datum')
+    data = models.CharField(max_length=200, verbose_name='Значение')
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
 
     def __str__(self):
@@ -218,12 +222,6 @@ class Product(models.Model):
         if not self.id:
             self.slug = gen_slug(self.name)
         super().save(*args, **kwargs)
-
-
-class Data(models.Model):
-    """ Product properties value """
-    value = models.CharField('Свойство', max_length=200, db_index=True, unique=True)
-    product = models.ManyToManyField(Product, verbose_name='Значение', related_name='datum')
 
 
 class ProductImg(models.Model):

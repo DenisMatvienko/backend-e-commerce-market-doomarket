@@ -3,7 +3,7 @@ from django.http import request
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
-from .models import Product, Category, Subcategory, Basis
+from .models.product import Product, Category, Subcategory, Basis
 from shop.business import CategoryList
 
 
