@@ -3,16 +3,14 @@ from django.http import request
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
-from .models.product import Product, Category, Subcategory, Basis
-from shop.business import CategoryList
+from .models.product import Product, Category, Subcategory, ProductType
+from shop.business import CategoryList, SubcategoryList, ProductTypeList
 
 
 class ProductListView(ListView, CategoryList):
     """
     List of Products in main page
-    1) Should change the name of template on 'movie_list' cause class take the link of 'model' and after that
-     auto-substitute ending of the word - '_list', after that he find the template with name 'product_list'
-    2) CategoryList (get_category) - list of categories to header and sidebar
+    CategoryList (get_category) - list of categories to header and sidebar
     """
     model = Product
     queryset = Product.objects.filter(available=True)
@@ -27,19 +25,16 @@ class ProductDetailView(DetailView, CategoryList):
     slug_field = 'slug'
 
 
-class CategoryDetailView(DetailView, CategoryList):
+class CategoryDetailView(DetailView, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories """
     model = Category
-    template_name = 'shop/category_detail.html'
 
 
-class SubcategoryDetailView(DetailView, CategoryList):
-    """ List of product which have relationship with categories """
+class SubcategoryDetailView(DetailView, SubcategoryList, ProductTypeList):
+    """ List of subcategory products which have relationship with categories """
     model = Subcategory
-    template_name = 'shop/subcategory_detail.html'
 
 
-class BasisDetailView(DetailView, CategoryList):
-    """ List of product which have relationship with categories """
-    model = Basis
-    template_name = 'shop/basis_detail.html'
+class ProductTypeDetailView(DetailView, ProductTypeList):
+    """ List of product-type products which have relationship with subcategories """
+    model = ProductType

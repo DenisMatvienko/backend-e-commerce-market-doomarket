@@ -1,9 +1,9 @@
-{% extends 'shop/bases/basis-base.html' %}
+{% extends 'shop/bases/product_type-base.html' %}
 {% block basis-content %}
 	<!-- Cards Product-list start -->
 		<div class="cards-wrapper">
 			<!-- CARD START -->
-			{% for product in view.get_product_by_basis %}
+			{% for product in view.get_product_by_product_type %}
 				<div class="card card__wishlist---margin">
 					<!-- Card Header start -->
 					<div class="card__header">

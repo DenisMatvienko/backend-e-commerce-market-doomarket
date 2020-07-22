@@ -18,8 +18,8 @@
 	</ul>
 </nav>
 	<ul>
-		{% for basis in view.get_basis_by_subcategory %}
-			<a href="{{ basis.get_absolute_url }}"><li class="product__description-min-list-content subcategories-list">{{ basis.alias }}</li></a>
+		{% for producttype in view.get_product_type_by_subcategory %}
+			<a href="{{ producttype.get_absolute_url }}"><li class="product__description-min-list-content subcategories-list">{{ producttype.alias }}</li></a>
 		{% endfor %}
 	</ul>
 <hr>
