@@ -1,4 +1,4 @@
-from .models.product import Product, Category, Subcategory, ProductType
+from .models.product import Product, Category, Subcategory, ProductType, Property, Value
 
 
 class CategoryList:
@@ -39,3 +39,15 @@ class ProductTypeList:
     def get_product_by_product_type(self):
         """ Return list of product-type products """
         return Product.objects.filter(product_type__slug=self.kwargs.get('slug'))
+
+
+class FiltersPropertyValuesList:
+    """ The lists on filter sidebar """
+
+    def get_property(self):
+        """ Return list of property into filters """
+        return Property.objects.filter(product_type__slug=self.kwargs.get('slug'))[:6]
+
+    def get_value(self):
+        """ Return list of values into each property filter """
+        return Value.objects.filter(properties__product_type__slug=self.kwargs.get('slug'))

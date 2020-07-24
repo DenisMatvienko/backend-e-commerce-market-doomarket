@@ -18,9 +18,9 @@
 				<div class="main__row">
 					<div class="main__column-left category-detail-width">
 	                    {% include 'include/categories_name_plates/basis-name-plate-in-category-detail.html' %}
-	                    	{% include 'include/sidebar_filters/os-filter.html' %}
-	                    	{% include 'include/sidebar_filters/width-filter.html' %}
-	                    	{% include 'include/sidebar_filters/color-filter.html' %}
+	                    	{% for property in view.get_property %}
+	                    		{% include 'include/sidebar_filters/width-filter.html' %}
+							{% endfor %}
 						{% include 'include/navigation-sidebar.html' %}
 						{% include 'include/banner.html' %}
 					</div>

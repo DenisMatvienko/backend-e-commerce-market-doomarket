@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.base import View
 
 from .models.product import Product, Category, Subcategory, ProductType
-from shop.business import CategoryList, SubcategoryList, ProductTypeList
+from shop.business import CategoryList, SubcategoryList, ProductTypeList, FiltersPropertyValuesList
 
 
 class ProductListView(ListView, CategoryList):
@@ -35,6 +35,6 @@ class SubcategoryDetailView(DetailView, SubcategoryList, ProductTypeList):
     model = Subcategory
 
 
-class ProductTypeDetailView(DetailView, ProductTypeList):
+class ProductTypeDetailView(DetailView, ProductTypeList, FiltersPropertyValuesList):
     """ List of product-type products which have relationship with subcategories """
     model = ProductType
