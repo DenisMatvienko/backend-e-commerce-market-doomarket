@@ -1,4 +1,4 @@
-{% extends 'shop/nocommercial-base.html' %}
+{% extends 'shop/bases/nocommercial-base.html' %}
 {% block product-content %}
 
 <!-- //// BLOCK.PRODUCTDETAIL //// -->
@@ -6,7 +6,7 @@
 	<div class="product-continer">
 		<div class="product__header">
 			<div class="title__container">
-				<h1 class="product__title">{{ product.subcategories }} {{ product.name }}</h1>
+				<h1 class="product__title">{{ product.product_type }} {{ product.name }}, {{ product.value_set.first.properties }}: {{ product.value_set.first.value }}</h1>
 				<div class="card__icon-btns icon__title">
 					<button class="card__icon-btn">
 						<svg width="21" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.366 21 19.268">
@@ -37,10 +37,13 @@
 					<li class="product__description-min-list-content top-cut">
 						<span>Коллекция: {{ product.collection }}</span>
 					</li>
-					{% for property in product.properties.all %}
-					    <li class="product__description-min-list-content top-cut">
-							<span>{{ property.alias }}: {{ property.data }}</span>
-						</li>
+					{% for productvalue in product.value_set.all %}
+						{% if productvalue.properties == None %}
+						{% else %}
+						    <li class="product__description-min-list-content top-cut">
+								<span>{{ productvalue.properties }} : {{ productvalue.value }}</span>
+							</li>
+						{% endif%}
 					{% endfor %}
 				</ul>
 				<a href="#read" class="product__description-link">Читать далее</a>
@@ -66,10 +69,14 @@
 					<li class="product__description-min-list-content">
 						<span>Коллекция: {{ product.collection }}</span>
 					</li>
-					{% for property in product.properties.all %}
-						<li class="product__description-min-list-content">
-							<span>{{ property.alias }}: {{ property.data }}</span>
-						</li>
+					{% for productvalue in product.value_set.all %}
+						{% if productvalue.properties == None %}
+							
+						{% else %}
+							<li class="product__description-min-list-content">
+								<span>{{ productvalue.properties }} : {{ productvalue.value }}</span>
+							</li>
+						{% endif%}
 					{% endfor %}
 				</ul>
 			</div>

@@ -18,12 +18,12 @@
 				<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
 			</svg>
 		</div>
-		<a href="#" class="tabs__link">{{ product.brand }}</a>
+		<a href="{{ product.product_type.get_absolute_url }}" class="tabs__link">{{ product.product_type }}</a>
 		<div class="tabs__icon-arrow">
 			<svg xmlns="http://www.w3.org/2000/svg" width="7" height="20" viewBox="1.999 1 6.001 10">
 				<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
 			</svg>
 		</div>
-		<a href="#" class="tabs__link">{{ product.name }}</a>
+		<span class="tabs__link">{{ product.name }}</span>
 	</div>
 <!-- tabs end -->

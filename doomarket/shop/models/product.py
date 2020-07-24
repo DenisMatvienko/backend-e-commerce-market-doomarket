@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from .utils import gen_slug, gen_slug_clear
+from shop.utils import gen_slug, gen_slug_clear
 
 
 class Category(models.Model):
@@ -32,7 +32,7 @@ class Subcategory(models.Model):
     name = models.CharField('Название подкатегории', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
-    categories = models.ForeignKey(Category, verbose_name='', on_delete=models.SET_NULL, null=True)
+    categories = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
     icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='subcategory_icon/')
 
     def __str__(self):
@@ -57,6 +57,7 @@ class Brand(models.Model):
     name = models.CharField('Название бренда', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='brand_icon/')
 
     def __str__(self):
         return self.name
@@ -92,28 +93,38 @@ class Collection(models.Model):
         verbose_name_plural = 'Коллекции'
 
 
-class Property(models.Model):
-    """ Properties of products, tech-info """
-    name = models.CharField('Свойство', max_length=200, db_index=True, unique=True)
+class ProductType(models.Model):
+    """
+        ProductType (of products which have same tec info and properties, as group of same products in ProductType)
+        That decision made of EAV model, actually  easy to use*, than get property separate to each product.
+        In this decision you can get the list of properties to basis and this list of properties will be displayed in
+        group of products which is includet to ProductType object.
+        Also this decisions uses to large markets which have big nomenclature, and different association with naming
+        of categories
+        *Easy to use - is when you assign some properties to group of products, instead assign properties to every
+         product
+    """
+    name = models.CharField('Название основы', max_length=250)
     alias = models.CharField('Алиас', max_length=200, db_index=True)
-    data = models.CharField('Значение', max_length=200)
-    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+    slug = models.SlugField(max_length=50, unique=True)
+    subcategories = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='basis_icon/')
 
     def __str__(self):
-        return f'{self.name} - {self.data}'
+        return self.name
 
     def save(self, *args, **kwargs):
         """ Save generation slug """
         if not self.id:
-            self.slug = gen_slug(self.name)
+            self.slug = gen_slug_clear(self.name)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('product-type', kwargs={'slug': self.slug})
+
     class Meta:
-        verbose_name = 'Свойства'
-        verbose_name_plural = 'Свойства'
-        indexes = [
-            models.Index(fields=['id', 'slug']),
-        ]
+        verbose_name = 'Основа'
+        verbose_name_plural = 'Основы'
 
 
 class Product(models.Model):
@@ -155,7 +166,13 @@ class Product(models.Model):
         null=True,
         related_name='subcategorys'
     )
-    properties = models.ManyToManyField(Property, verbose_name='свойство', related_name='property')
+    product_type = models.ForeignKey(
+        ProductType,
+        verbose_name='Основа',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='basises'
+    )
 
     def __str__(self):
         return self.name
@@ -176,6 +193,52 @@ class Product(models.Model):
         if not self.id:
             self.slug = gen_slug(self.name)
         super().save(*args, **kwargs)
+
+
+class Property(models.Model):
+    """ Properties of products, tec-info """
+    name = models.CharField('Свойство', max_length=200, db_index=True, unique=True)
+    alias = models.CharField('Алиас', max_length=200, db_index=True)
+    slug = models.SlugField(max_length=50, unique=True, db_index=True)
+    product_type = models.ManyToManyField(ProductType, verbose_name='Основа', related_name='product_types')
+
+    def __str__(self):
+        return f'{self.alias}'
+
+    def save(self, *args, **kwargs):
+        """ Save generation slug """
+        if not self.id:
+            self.slug = gen_slug(self.name)
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'Свойства'
+        verbose_name_plural = 'Свойства'
+        indexes = [
+            models.Index(fields=['id', 'slug']),
+        ]
+
+
+class Value(models.Model):
+    """ The values of product property, which belong to product """
+    value = models.CharField('Значение', max_length=200, db_index=True, unique=True)
+    properties = models.ForeignKey(
+        Property,
+        verbose_name='Свойство',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='property')
+    product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f'{self.value}'
+
+    class Meta:
+        verbose_name = 'Значение'
+        verbose_name_plural = 'Значения'
+        indexes = [
+            models.Index(fields=['id', 'value']),
+        ]
 
 
 class ProductImg(models.Model):

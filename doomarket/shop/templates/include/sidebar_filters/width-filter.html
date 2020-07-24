@@ -8,20 +8,18 @@
 					</svg>
 				</svg>
 			</a>
-			<div class="navigation__item-title">Ширина</div>
+			
+				<div class="navigation__item-title">{{ property.name }}</div>
+			
 		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__item-icon">
-				<input type="checkbox" class="checked" name="genre" value="#">
-			</a>
-			<div class="navigation__item-title">10</div>
-		</li>
-		<li class="navigation__item">
-			<a href="#" class="navigation__item-icon">
-				<input type="checkbox" class="checked" name="genre" value="#">
-			</a>
-			<div class="navigation__item-title">20</div>
-		</li>
+		{% for values in view.get_value %}
+			<li class="navigation__item">
+				<a href="#" class="navigation__item-icon">
+					<input type="checkbox" class="checked" name="genre" value="#">
+				</a>
+				<div class="navigation__item-title">{{ values.value }}</div>
+			</li>
+		{% endfor %}
 	</ul>
 </nav>
 <!-- width end -->
