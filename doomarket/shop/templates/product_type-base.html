@@ -18,9 +18,27 @@
 				<div class="main__row">
 					<div class="main__column-left category-detail-width">
 	                    {% include 'include/categories_name_plates/product_type-name-plate-in-category-detail.html' %}
-	                    	{% for property in view.get_property %}
-	                    		{% include 'include/sidebar_filters/width-filter.html' %}
-							{% endfor %}
+		                    <form action="{% url 'filter' %}" method="get" name="filter">
+		                    	{% if view.get_property_width %}
+		                    		{% include 'include/sidebar_filters/width-filter.html' %}
+		                    	{% endif %}
+		                    	{% if view.get_property_depth %}
+		                    		{% include 'include/sidebar_filters/depth-filter.html' %}
+		                    	{% endif %}
+		                    	{% if view.get_property_height %}
+		                    		{% include 'include/sidebar_filters/height-filter.html' %}
+		                    	{% endif %}
+		                    	{% if view.get_property_thickness %}
+		                    		{% include 'include/sidebar_filters/thickness-filter.html' %}
+		                    	{% endif %}
+		                    	{% if view.get_property_diagonal %}
+		                    		{% include 'include/sidebar_filters/diagonal-filter.html' %}
+		                    	{% endif %}
+		                    	{% if view.get_property_length_bracelet %}
+		                    		{% include 'include/sidebar_filters/length-bracelet-filter.html' %}
+		                    	{% endif %}
+		                    	{% include 'include/buttons/filter-find-button.html' %}
+			                </form>
 						{% include 'include/navigation-sidebar.html' %}
 						{% include 'include/banner.html' %}
 					</div>
@@ -36,10 +54,11 @@
 			<!-- /.container -->
 		</main>
 		<!-- /.main-content -->
-		{% include 'include/button-up.html' %}
+		{% include 'include/buttons/button-up.html' %}
 		{% include 'include/footer.html' %}
 
 		<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'js/filters-ajax.js' %}"></script>
 		<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
 		<script src="{% static 'js/button-up-to-top.js' %}"></script>
 	</body>

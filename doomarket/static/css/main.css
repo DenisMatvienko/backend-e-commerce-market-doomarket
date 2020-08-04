@@ -777,9 +777,38 @@ a.nav-dropdown__dropdown-item {
   margin-top: 30px;
 }
 
-/*.category-detail-width {
-  width: 340px;
-}*/
+.filter-scroll {
+  overflow: auto;
+  max-height: 185px;
+}
+
+.submit__filter-button {
+  width: 300px;
+  height: 60px;
+  border-radius: 5px;
+  border: none;
+  background-color: #A6A6A6;
+  transition: background-color 0.2s ease-in
+}
+  .submit__filter-button:hover {
+    background-color: #1875f0;
+    cursor: pointer; }
+
+.submit__filter-button-text {
+  color: #262626;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.2s ease-in
+}
+  .submit__filter-button-text:hover {
+    color: #A6A6A6; }
+
+.background-filter {
+  background-color: #1A1A1A;
+}
 
 .navigation__item {
   display: flex;
