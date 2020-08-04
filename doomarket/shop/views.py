@@ -15,6 +15,7 @@ class ProductListView(ListView, CategoryList):
     """
     model = Product
     queryset = Product.objects.filter(available=True)
+    paginate_by = 6
 
 
 class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
@@ -28,17 +29,20 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
 
 class CategoryDetailView(DetailView, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories. """
+    paginate_by = 6
     model = Category
 
 
 class SubcategoryDetailView(DetailView, CategoryList, SubcategoryList, ProductTypeList):
     """ List of subcategory products which have relationship with categories. """
     model = Subcategory
+    paginate_by = 2
 
 
 class ProductTypeDetailView(DetailView, CategoryList, ProductTypeList, FiltersPropertyValuesList):
     """ List of product-type products which have relationship with subcategories. """
     model = ProductType
+    paginate_by = 6
 
 
 class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeList, FiltersPropertyValuesList, ListView):
@@ -47,4 +51,4 @@ class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeLis
         by filters in querysets by producttype_filters_querysets.
         Separate filters by product types is for easy manage filters
      """
-
+    paginate_by = 6
