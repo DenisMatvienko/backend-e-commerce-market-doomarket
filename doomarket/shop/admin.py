@@ -35,7 +35,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Value)
 class ProductInstancePropertyValueAdmin(admin.ModelAdmin):
-    list_display = ('value',)
+    list_display = ('value', 'id',)
 
 
 @admin.register(Category, Subcategory, Brand, Collection, ProductType)

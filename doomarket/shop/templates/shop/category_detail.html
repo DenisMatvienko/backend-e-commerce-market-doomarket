@@ -26,7 +26,7 @@
 					</div>
 					<a href="{{ product.get_absolute_url }}">
 						<h4 class="card__title">
-							{{ product.product_type }} {{ product.name }}, {{ product.value_set.first.properties }}: {{ product.value_set.first.value }}
+							{{ product.product_type.alias }} {{ product.name }}, {{ product.value_set.first.properties }}: {{ product.value_set.first.value }}
 						</h4>
 					</a>
 					<div class="card__footer">

@@ -8,4 +8,5 @@ urlpatterns = [
     path('category/<slug:slug>', views.CategoryDetailView.as_view(), name='product-category'),
     path('subcategory/<slug:slug>', views.SubcategoryDetailView.as_view(), name='product-subcategory'),
     path('product-type/<slug:slug>', views.ProductTypeDetailView.as_view(), name='product-type'),
+    path('json-filter/', views.FilterProductsView.as_view(), name='json_filter'),
 ]

@@ -8,16 +8,16 @@
 						</svg>
 					</svg>
 				</a>
-				<div class="navigation__item-title">Бренды</div>
+				<div class="navigation__item-title">Коллекции</div>
 			</li>
 		</ul>
 	</nav>
 	<nav class="navigation filter-scroll">
 		<ul class="navigation__list">
-			{% for product in view.get_brand %}
+			{% for product in view.get_collections %}
 				<li class="navigation__item filter">
 					<a href="#" class="navigation__item-icon">
-						<input type="checkbox" class="checked" name="brand" value="{{ product.id }}">
+						<input type="checkbox" class="checked" name="collections" value="{{ product.id }}">
 					</a>
 					<div class="navigation__item-title">{{ product.alias }}</div>
 				</li>

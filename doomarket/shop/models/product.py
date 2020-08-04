@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from shop.utils import gen_slug, gen_slug_clear
+from shop.management.utils import gen_slug, gen_slug_clear
 
 
 class Category(models.Model):

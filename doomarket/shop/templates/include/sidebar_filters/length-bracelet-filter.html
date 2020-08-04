@@ -8,18 +8,20 @@
 						</svg>
 					</svg>
 				</a>
-				<div class="navigation__item-title">Бренды</div>
+				{% for property in view.get_property_length_bracelet %}
+					<div class="navigation__item-title">{{ property.name }}</div>
+				{% endfor %}
 			</li>
 		</ul>
 	</nav>
 	<nav class="navigation filter-scroll">
 		<ul class="navigation__list">
-			{% for product in view.get_brand %}
+			{% for values in view.get_value_length_bracelet %}
 				<li class="navigation__item filter">
 					<a href="#" class="navigation__item-icon">
-						<input type="checkbox" class="checked" name="brand" value="{{ product.id }}">
+						<input type="checkbox" class="checked" name="length-bracelet" value="{{ values.id }}">
 					</a>
-					<div class="navigation__item-title">{{ product.alias }}</div>
+					<div class="navigation__item-title">{{ values.value }}</div>
 				</li>
 			{% endfor %}
 		</ul>
