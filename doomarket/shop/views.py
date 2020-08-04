@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 
 from .models.product import Product, Category, Subcategory, ProductType
 from shop.business.filters import FiltersPropertyValuesList
-from shop.business.producttype_filters_querysets.producttype_filters import ProductTypeFiltersView
+from shop.business.producttype_filters_querysets.producttype_filters import JsonProductTypeFilterView
 from shop.business.catalogue import CategoryList, SubcategoryList, ProductTypeList
 
 
@@ -41,10 +41,10 @@ class ProductTypeDetailView(DetailView, CategoryList, ProductTypeList, FiltersPr
     model = ProductType
 
 
-class FilterProductsView(ProductTypeFiltersView, CategoryList, ProductTypeList, FiltersPropertyValuesList, ListView):
+class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeList, FiltersPropertyValuesList, ListView):
     """
         After that when we gives view filters in product-type as FiltersPropertyValuesList, sort the products
         by filters in querysets by producttype_filters_querysets.
         Separate filters by product types is for easy manage filters
      """
-    template_name = 'shop/producttype_detail.html'
+

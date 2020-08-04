@@ -18,7 +18,7 @@
 				<div class="main__row">
 					<div class="main__column-left category-detail-width">
 	                    {% include 'include/categories_name_plates/product_type-name-plate-in-category-detail.html' %}
-		                    <form action="{% url 'filter' %}" method="get" name="filter">
+		                    <form action="{% url 'json_filter' %}" method="get" name="filter">
 		                    	{% if view.get_property_width %}
 		                    		{% include 'include/sidebar_filters/width-filter.html' %}
 		                    	{% endif %}
@@ -58,9 +58,10 @@
 		{% include 'include/footer.html' %}
 
 		<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
-		<script src="{% static 'js/filters-ajax.js' %}"></script>
 		<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
 		<script src="{% static 'js/button-up-to-top.js' %}"></script>
+		<script src="{% static 'js/filters-ajax.js' %}"></script>
+		<script src="http://twitter.github.com/hogan.js/builds/3.0.1/hogan-3.0.1.js"></script>
 	</body>
 </html>
 
