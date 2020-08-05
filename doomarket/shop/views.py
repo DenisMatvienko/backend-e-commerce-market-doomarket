@@ -29,9 +29,9 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
 
 class CategoryDetailView(DetailView, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories. """
-    paginate_by = 6
     model = Category
-
+    paginate_by = 6
+    
 
 class SubcategoryDetailView(DetailView, CategoryList, SubcategoryList, ProductTypeList):
     """ List of subcategory products which have relationship with categories. """
