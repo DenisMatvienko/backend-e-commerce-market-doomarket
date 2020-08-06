@@ -9,9 +9,9 @@ class CategoryList:
         """ Get list categories on main page """
         return Category.objects.all()
 
-    def get_product_by_category(self):
-        """ Get list of products on each of category in category-detail """
-        return Product.objects.filter(categories__slug=self.kwargs.get('slug'))
+    # def get_product_by_category(self):
+    #     """ Get list of products on each of category in category-detail """
+    #     return Product.objects.filter(categories__slug=self.kwargs.get('slug'))
 
     def get_product_recommendations(self):
         return Product.objects.all()[:7]
@@ -38,7 +38,3 @@ class ProductTypeList:
     def get_product_type_by_subcategory(self):
         """ Return the product-type to subcategories list """
         return ProductType.objects.filter(subcategories__slug=self.kwargs.get('slug'))
-
-    def get_product_by_product_type(self):
-        """ Return list of product-type products """
-        return Product.objects.filter(product_type__slug=self.kwargs.get('slug'))

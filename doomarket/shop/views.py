@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import request
 from django.views.generic import ListView, DetailView
+from django.views.generic.list import MultipleObjectMixin
 
 from .models.product import Product, Category, Subcategory, ProductType
 from shop.business.filters import FiltersPropertyValuesList
-from shop.business.producttype_filters_querysets.producttype_filters import JsonProductTypeFilterView
+from shop.business.producttype_filters_querysets.producttype_filters_json import JsonProductTypeFilterView
 from shop.business.catalogue import CategoryList, SubcategoryList, ProductTypeList
 
 
@@ -27,22 +28,49 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
     slug_field = 'slug'
 
 
-class CategoryDetailView(DetailView, CategoryList, SubcategoryList):
+class CategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories. """
     model = Category
-    paginate_by = 6
-    
+    paginate_by = 9
 
-class SubcategoryDetailView(DetailView, CategoryList, SubcategoryList, ProductTypeList):
+    def get_context_data(self, **kwargs):
+        """
+            Get list of products related to category in category-detail
+            Use MultipleObjectMixin and have pagination just like in ListView
+        """
+        object_list = Product.objects.filter(categories__slug=self.kwargs.get('slug'))
+        context = super(CategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        return context
+
+
+class SubcategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList, ProductTypeList):
     """ List of subcategory products which have relationship with categories. """
     model = Subcategory
-    paginate_by = 2
+    paginate_by = 9
+
+    def get_context_data(self, **kwargs):
+        """
+            Get list of products related to subcategory in subcategory-detail
+            Use MultipleObjectMixin and have pagination just like in ListView
+        """
+        object_list = Product.objects.filter(subcategories__slug=self.kwargs.get('slug'))
+        context = super(SubcategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        return context
 
 
-class ProductTypeDetailView(DetailView, CategoryList, ProductTypeList, FiltersPropertyValuesList):
+class ProductTypeDetailView(DetailView, MultipleObjectMixin, CategoryList, ProductTypeList, FiltersPropertyValuesList):
     """ List of product-type products which have relationship with subcategories. """
     model = ProductType
-    paginate_by = 6
+    paginate_by = 9
+
+    def get_context_data(self, **kwargs):
+        """
+            Get list of products related to product-type in ProductTypeDetail
+            Use MultipleObjectMixin and have pagination just like in ListView
+         """
+        object_list = Product.objects.filter(product_type__slug=self.kwargs.get('slug'))
+        context = super(ProductTypeDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        return context
 
 
 class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeList, FiltersPropertyValuesList, ListView):
@@ -51,4 +79,3 @@ class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeLis
         by filters in querysets by producttype_filters_querysets.
         Separate filters by product types is for easy manage filters
      """
-    paginate_by = 6
