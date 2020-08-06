@@ -13,6 +13,9 @@ class CategoryList:
         """ Get list of products on each of category in category-detail """
         return Product.objects.filter(categories__slug=self.kwargs.get('slug'))
 
+    def get_product_recommendations(self):
+        return Product.objects.all()[:7]
+
 
 class SubcategoryList:
     """

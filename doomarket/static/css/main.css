@@ -2123,15 +2123,88 @@ a.nav-dropdown__dropdown-item {
   margin-left: 100px;
   margin-top: 50px; }
 
-.recommendation__products {
+.wrapper {
+  width: 1100px;
+  height: 540px;
+  border-radius: 5px;
+  background-color: #F5F5F5;
+  margin-left: 100px;
+  margin-top: 25px;
+}
+
+.slider-container {
+  overflow: hidden;
+  background-color: #F5F5F5;
+}
+
+.slider-track {
   display: flex;
-  flex-direction: row;
-  overflow: auto;
-  width: 98%;
-  height: 550px;
-  margin: 1% 1%;
-  padding: 1% 1%;
-  background-color: #F5F5F5; }
+  background-color: #F5F5F5;
+  width: 1100px;
+  height: 510px;
+  border-radius: 5px;
+  transition: .2s;
+}
+
+.slider-item {
+  height: 500px;
+  padding: 10px 10px; 
+}
+
+.value-cards {
+  width: 340px;
+  height: 480px;
+  padding: 10px 10px; 
+  background-color: #F5F5F5;
+}
+
+.slider-buttons {
+  text-align: center;
+} 
+
+.btn-prev {
+  position: absolute;
+  top: 320px;
+  left: 30px;
+  display: inline-block;
+  border: none;
+  outline: none;
+  background-color: rgba(245, 245, 245, 0);
+}
+
+.btn-next {
+  position: absolute;
+  top: 320px;
+  right: 30px;
+  display: inline-block;
+  border: none;
+  outline: none;
+  background-color: rgba(245, 245, 245, 0);
+}
+
+.btn-next svg {
+  width: 50px;
+  height: 50px;
+  fill: #4D4D4D;
+  transition: fill 0.2s ease-in;
+}
+
+.btn-next svg:hover {
+  fill: #1875f0;
+}
+
+.btn-prev svg {
+  width: 50px;
+  height: 50px;
+  fill: #4D4D4D;
+  transform: rotate(180deg);
+  transition: fill 0.2s ease-in;
+}
+
+.btn-prev svg:hover {
+  fill: #1875f0;
+}
+
 
 .product-description__properties {
   margin-top: 1000px;
