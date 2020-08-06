@@ -2167,6 +2167,8 @@ a.nav-dropdown__dropdown-item {
   top: 320px;
   left: 30px;
   display: inline-block;
+  width: 65px;
+  height: 65px;
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
@@ -2177,6 +2179,8 @@ a.nav-dropdown__dropdown-item {
   top: 320px;
   right: 30px;
   display: inline-block;
+  width: 65px;
+  height: 65px;
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
