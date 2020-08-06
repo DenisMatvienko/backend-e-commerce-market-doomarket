@@ -7,10 +7,7 @@
 	<div class="product-continer">
 		<div class="product__header">
 			<div class="title__container">
-				<h1 class="product__title">{{ product.product_type.alias }} {{ product.name }}, 
-				{% for property in view.get_property_width %}
-					{{ property.name }}
-				{% endfor %}</h1>
+				<h1 class="product__title">{{ product.product_type.alias }} {{ product.name }}</h1>
 				<div class="card__icon-btns icon__title">
 					<button class="card__icon-btn">
 						<svg width="21" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.366 21 19.268">
@@ -23,11 +20,33 @@
 			</div>
 			<span class="product__article">{{ product.article }}</span>
 			<img src="{{ product.title_img.url }}" class="product__img">
-			<div class="img-list__container">
-				{% for image in product.productimg_set.all %}
-					<img src="{{ image.image.url }}" class="list-img" alt="{{  image.name}}">
-				{% endfor %}
-			</div>
+			{% if product.productimg_set.all %}
+				<div class="wrapper__img-carousel">
+					<div class="slider-container__img">
+						<div class="slider-track__img">	
+							{% for image in product.productimg_set.all %}
+								<div class="slider-item__img">
+									<div class="value-cards__img">
+										<img src="{{ image.image.url }}" class="list-img" alt="{{  image.name }}">
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="slider-buttons__img">
+						<button class="btn-prev__img">
+							<svg xmlns="http://www.w3.org/2000/svg" width="100" height="11" viewBox="1.999 1 6.001 10">
+								<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
+							</svg></button>
+						<button class="btn-next__img">
+							<svg xmlns="http://www.w3.org/2000/svg" width="100" height="11" viewBox="1.999 1 6.001 10">
+								<path paint-order="stroke fill markers" fill-rule="evenodd" d="M8 6.002L5 1H2.125l3.018 5.002L1.999 11H5l3-4.998z"/>
+							</svg>
+						</button>	
+					</div>
+				</div>
+			{% endif %}			
 		</div>
 		<div class="info__container">
 			<div class="product__description-min">
@@ -91,8 +110,7 @@
 		</div>
 		<div class="wrapper">
 			<div class="slider-container">
-				<div class="slider-track">
-					
+				<div class="slider-track">	
 					{% for product in view.get_product_recommendations %}
 						<div class="slider-item">
 							<div class="value-cards">
@@ -135,7 +153,6 @@
 							</div>
 						</div>
 					{% endfor %}
-
 				</div>	
 			</div>
 			<div class="slider-buttons">
