@@ -16,7 +16,7 @@ class ProductListView(ListView, CategoryList):
     """
     model = Product
     queryset = Product.objects.filter(available=True)
-    paginate_by = 6
+    paginate_by = 40
 
 
 class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
@@ -31,7 +31,7 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
 class CategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories. """
     model = Category
-    paginate_by = 9
+    paginate_by = 28
 
     def get_context_data(self, **kwargs):
         """
@@ -46,7 +46,7 @@ class CategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, Subcateg
 class SubcategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList, ProductTypeList):
     """ List of subcategory products which have relationship with categories. """
     model = Subcategory
-    paginate_by = 9
+    paginate_by = 28
 
     def get_context_data(self, **kwargs):
         """
@@ -61,7 +61,7 @@ class SubcategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, Subca
 class ProductTypeDetailView(DetailView, MultipleObjectMixin, CategoryList, ProductTypeList, FiltersPropertyValuesList):
     """ List of product-type products which have relationship with subcategories. """
     model = ProductType
-    paginate_by = 9
+    paginate_by = 28
 
     def get_context_data(self, **kwargs):
         """
