@@ -41,7 +41,7 @@ btnPrev.addEventListener('click', () => {
 
 //	Track css to move prev on 'position' px
 const setPosition = () => {
-	track.style.transform = `translateX(${position}px)`
+	track.style.transform = `translateX(${position}px)`;
 };
 
 //	Get circumstances when buttons is disabled. 
