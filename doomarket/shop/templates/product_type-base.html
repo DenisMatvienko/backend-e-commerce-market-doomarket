@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 {% load static %}
+{% load static i18n %}
 <html lang="en">
 	<head>
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>{{ producttype.alias }} - купить {{ producttype.alias }} в Санкт-Петербурге </title>
+		<title>{{ producttype.alias }} - {% trans 'купить' %} {{ producttype.alias }} {% trans 'в Санкт-Петербурге и Ленинградской области' %} </title>
 		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">

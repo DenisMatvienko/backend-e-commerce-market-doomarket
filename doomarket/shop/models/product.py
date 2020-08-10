@@ -108,7 +108,7 @@ class ProductType(models.Model):
     alias = models.CharField('Алиас', max_length=200, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
     subcategories = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
-    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='basis_icon/')
+    icon_field = models.ImageField('Изображение', blank=True, null=True, upload_to='product_type_icon/')
 
     def __str__(self):
         return self.name
@@ -203,7 +203,7 @@ class Property(models.Model):
     product_type = models.ManyToManyField(ProductType, verbose_name='Основа', related_name='product_types')
 
     def __str__(self):
-        return f'{self.alias}'
+        return self.alias
 
     def save(self, *args, **kwargs):
         """ Save generation slug """
@@ -221,7 +221,7 @@ class Property(models.Model):
 
 class Value(models.Model):
     """ The values of product property, which belong to product """
-    value = models.CharField('Значение', max_length=200, db_index=True, unique=True)
+    value = models.CharField('Значение', max_length=200, db_index=True)
     properties = models.ForeignKey(
         Property,
         verbose_name='Свойство',
@@ -231,7 +231,7 @@ class Value(models.Model):
     product = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'{self.value}'
+        return self.value
 
     class Meta:
         verbose_name = 'Значение'

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models.product import *
+from modeltranslation.admin import TranslationAdmin
 
 
 admin.site.site_header = 'Doomarket admin'
@@ -7,8 +8,17 @@ admin.site.site_title = 'Doomarket admin'
 admin.site.index_title = 'Welcome to Doomarket admin'
 
 
+@admin.register(ProductType)
+class ProductAdmin(TranslationAdmin):
+    list_display = ('name', 'subcategories', 'id',)
+    list_display_links = ('name',)
+    list_filter = ('subcategories',)
+    search_fields = ('name',)
+    readonly_fields = ('slug',)
+
+
 @admin.register(Property)
-class PropertyAdmin(admin.ModelAdmin):
+class PropertyAdmin(TranslationAdmin):
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     list_filter = ('name',)
@@ -25,7 +35,7 @@ class ProductImgAdmin(admin.ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     list_display = ('name', 'brand', 'subcategories', 'updated', 'id',)
     list_display_links = ('name',)
     list_filter = ('brand', 'subcategories', 'updated', 'price',)
@@ -34,12 +44,26 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Value)
-class ProductInstancePropertyValueAdmin(admin.ModelAdmin):
+class ProductInstancePropertyValueAdmin(TranslationAdmin):
     list_display = ('value', 'id',)
 
 
-@admin.register(Category, Subcategory, Brand, Collection, ProductType)
+@admin.register(Brand, Collection)
 class DisplaysAdmin(admin.ModelAdmin):
+    list_display = ('name', 'id',)
+    list_display_links = ('name',)
+    readonly_fields = ('slug',)
+
+
+@admin.register(Category)
+class DisplaysAdmin(TranslationAdmin):
+    list_display = ('name', 'id',)
+    list_display_links = ('name',)
+    readonly_fields = ('slug',)
+
+
+@admin.register(Subcategory)
+class DisplaysAdmin(TranslationAdmin):
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     readonly_fields = ('slug',)

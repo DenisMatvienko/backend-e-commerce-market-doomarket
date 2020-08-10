@@ -1,3 +1,4 @@
+{% load static i18n %}
 {% load static %}
 <!-- Header start -->
 <header class="header">
@@ -15,7 +16,7 @@
 			<!-- /.header_serch-input-wrapper -->
 			<div class="header_search-dropdown">
 				<div data-select class="header-select">
-					<div data-select-title class="header-select__title">Категории
+					<div data-select-title class="header-select__title">{% trans 'Категории' %}
 						<div class="nav-dropdown__title-icon">
 							<svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +29,18 @@
 						</div>
 					</div>
 					<div class="header-select__dropdown hidden">
-						<div data-select-item="Бытовая" class="header-select__dropdown-item">Бытовая техника</div>
-						<div data-select-item="Компьютеры" class="header-select__dropdown-item">Компьютеры, ноутбуки</div>
-						<div data-select-item="Смартфоны" class="header-select__dropdown-item">Смартфоны и планшеты</div>
-						<div data-select-item="Часы" class="header-select__dropdown-item">Часы</div>
+						<div data-select-item="Бытовая" class="header-select__dropdown-item">
+							{% trans 'Бытовая техника' %}
+						</div>
+						<div data-select-item="Компьютеры" class="header-select__dropdown-item">
+							{% trans 'Компьютеры, ноутбуки' %}
+						</div>
+						<div data-select-item="Смартфоны" class="header-select__dropdown-item">
+							{% trans 'Смартфоны и планшеты' %}
+						</div>
+						<div data-select-item="Часы" class="header-select__dropdown-item">
+							{% trans 'Часы' %}
+						</div>
 					</div>
 				</div>
 			<!-- На случай если js не работает есть скрытый select -->
@@ -65,7 +74,7 @@
 						</svg>
 					</svg>
 				</span>
-				<span class="header-link__text">2 Товара</span>
+				<span class="header-link__text">2 {% trans 'Товара' %}</span>
 			</a>
 			<!-- /Basket-link -->
 			<!-- WishList -->
@@ -77,7 +86,7 @@
 						</svg>
 					</svg>
 				</span>
-				<span class="header-link__text">Избранное</span>
+				<span class="header-link__text">{% trans 'Избранное' %}</span>
 			</div>
 			<!-- /WishList -->
 			<!-- Sign in -->
@@ -89,12 +98,12 @@
 						</svg>
 					</svg>
 				</span>
-				<span class="header-link__text">Зарегистрироваться</span>
+				<span class="header-link__text">{% trans 'Зарегистрироваться' %}</span>
 			</a>
 			<!-- /Sign in -->
 			<!-- Sign in -->
 			<a href="./sign-in.html" class="header-link">
-				<span class="header-link__text">Вход</span>
+				<span class="header-link__text">{% trans 'Вход' %}</span>
 			</a>
 			<!-- /Sign in -->
 		</div>
@@ -108,7 +117,7 @@
 					<span class="header-mega-menu-link_icon">
 						<svg class="icon-svg" width="19" height="13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.167 19 12.666" fill="#4d4d4d"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="13" viewBox="2 1 18 12"><path paint-order="stroke fill markers" fill-rule="evenodd" d="M2 1v2h18V1H2zm0 7h18V6H2v2zm0 5h18v-2H2v2z"></svg></svg>
 					</span>
-					<span class="header-mega-menu-link_text">Все категории</span>
+					<span class="header-mega-menu-link_text">{% trans 'Все категории' %}</span>
 				</a>
 					<div class="nav-categories__dropdown">
 						<div class="nav-categories">
@@ -137,17 +146,17 @@
 			</div>
 			<!-- /.header-nav__categories -->
 			<div class="header-nav__deals">
-				<a href="" class="header-nav__link">Коллекции</a>
-				<a href="" class="header-nav__link">Бренды</a>
-				<a href="" class="header-nav__link">Скидки</a>
-				<a href="" class="header-nav__link">Как заказать?</a>
+				<a href="" class="header-nav__link">{% trans 'Коллекции' %}</a>
+				<a href="" class="header-nav__link">{% trans 'Бренды' %}</a>
+				<a href="" class="header-nav__link">{% trans 'Скидки' %}</a>
+				<a href="" class="header-nav__link">{% trans 'Как заказать?' %}</a>
 			</div>
 			<!-- /.header-nav__deals -->
 			<div class="header-nav__dropdowns">
 				<div class="header-nav__dropdowns-item">
 					<div class="nav-dropdown">
 						<a href="#" class="nav-dropdown__title
-						">Язык
+						">{% trans 'Опции' %}
 						<div class="nav-dropdown__title-icon">
 							<svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -161,15 +170,14 @@
 						</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">Русский</a>
-							<a href="#" class="nav-dropdown__dropdown-item">English</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Товары для детей' %}</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Профессиональные товары' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
 					<select class="hidden" name="" id="selectReal">
-						<option value="none">Язык</option>
-						<option value="Бытовая">Русский</option>
-						<option value="Компьютеры">English</option>
+						<option value="none">Товары для детей</option>
+						<option value="Бытовая">Профессиональные товары</option>
 					</select>
 					<!-- /Скрытый select -->
 					<!-- /header-select header-select--nav -->
@@ -178,7 +186,7 @@
 				<div class="header-nav__dropdowns-item">
 					<div class="nav-dropdown">
 						<a href="#" class="nav-dropdown__title">
-							Помощь
+							{% trans 'Помощь' %}
 							<div class="nav-dropdown__title-icon">
 								<svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -193,8 +201,8 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">Задать вопрос администрации</a>
-							<a href="#" class="nav-dropdown__dropdown-item">Справочная информация</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Задать вопрос администрации' %}</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
@@ -210,7 +218,7 @@
 				<div class="header-nav__dropdowns-item">
 					<div class="nav-dropdown">
 						<a href="#" class="nav-dropdown__title">
-							Контакты
+							{% trans 'Контакты' %}
 							<div class="nav-dropdown__title-icon">
 								<svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -225,9 +233,9 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">О нас</a>
-							<a href="#" class="nav-dropdown__dropdown-item">Контактная информация</a>
-							<a href="#" class="nav-dropdown__dropdown-item">Партнерам</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
+							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->

@@ -1,4 +1,5 @@
 {% extends 'shop/bases/nocommercial-base.html' %}
+{% load static i18n %}
 {% block product-content %}
 {% load static %}
 
@@ -52,13 +53,13 @@
 			<div class="product__description-min">
 				<ul class="product__description-min-list">
 					<li class="product__description-min-list-title">
-						<h3>Коротко о товаре</h3>
+						<h3>{% trans 'Коротко о товаре' %}</h3>
 					</li>
 					<li class="product__description-min-list-content top-cut">
-						<span>Бренд: {{ product.brand }}</span>
+						<span>{% trans  'Бренд' %}: {{ product.brand }}</span>
 					</li>
 					<li class="product__description-min-list-content top-cut">
-						<span>Коллекция: {{ product.collection }}</span>
+						<span>{% trans 'Коллекция' %}: {{ product.collection }}</span>
 					</li>
 					{% for productvalue in product.value_set.all %}
 						{% if productvalue.properties == None %}
@@ -69,28 +70,28 @@
 						{% endif%}
 					{% endfor %}
 				</ul>
-				<a href="#read" class="product__description-link">Читать далее</a>
+				<a href="#read" class="product__description-link">{% trans 'Читать далее' %}</a>
 			</div>
 			<div class="buy-wish-info__container">
-				<div class="product__price">{{ product.price }} ₽/шт.</div>
-				<div class="product__card-button"><button class="product__btn">Добавить в корзину</button></div>
-				<div class="product__wishlist-button"><button class="product__btn btn-wishlist">Добавить в избранное</button></div>
+				<div class="product__price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
+				<div class="product__card-button"><button class="product__btn">{% trans 'Добавить в корзину' %}</button></div>
+				<div class="product__wishlist-button"><button class="product__btn btn-wishlist">{% trans 'Добавить в избранное' %}</button></div>
 			</div>
 		</div>
-		<p class="product__description-title"><b>Описание:</b></p>
+		<p class="product__description-title"><b>{% trans 'Описание' %}:</b></p>
 			<p class="product__description">{{ product.description }}</p>
 			<div class="product-description__properties">
 				<ul class="product__description-min-list-bot">
 					<li class="product__description-min-list-title">
-						<a name="read"><h3>Характеристики товара</h3></a>
+						<a name="read"><h3>{% trans 'Характеристики товара' %}</h3></a>
 					</li>
 				</ul>
 				<ul class="bot-full">
 					<li class="product__description-min-list-content">
-						<span>Бренд: {{ product.brand }}</span>
+						<span>{% trans 'Бренд' %}: {{ product.brand }}</span>
 					</li>
 					<li class="product__description-min-list-content">
-						<span>Коллекция: {{ product.collection }}</span>
+						<span>{% trans 'Коллекция' %}: {{ product.collection }}</span>
 					</li>
 					{% for productvalue in product.value_set.all %}
 						{% if productvalue.properties == None %}
@@ -106,7 +107,7 @@
 	</div>
 	<div class="recommendation-container">
 		<div class="recommendation__title">
-			<span>Похожие товары</span>
+			<span>{% trans 'Похожие товары' %}</span>
 		</div>
 		<div class="wrapper">
 			<div class="slider-container">
@@ -140,7 +141,7 @@
 										</h4>
 									</a>
 									<div class="card__footer">
-										<div class="card_price">{{ product.price }} ₽/шт.</div>
+										<div class="card_price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
 										<button class="icon__cart">
 											<svg width="21" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
 												<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="1 1 20 20">

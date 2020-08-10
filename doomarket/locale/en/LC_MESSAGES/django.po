@@ -1,0 +1,280 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-10 15:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\shop\templates\base.html:9
+msgid "Интернет магазин электроники, бытовой техники и мебели"
+msgstr "Doo-market of electronics & appliences"
+
+#: .\shop\templates\category-base.html:9
+#: .\shop\templates\nocommercial-base.html:9
+#: .\shop\templates\product_type-base.html:9
+#: .\shop\templates\subcategory-base.html:9
+msgid "купить"
+msgstr "buy"
+
+#: .\shop\templates\category-base.html:9
+#: .\shop\templates\subcategory-base.html:9
+msgid "в Санкт-Петербурге"
+msgstr "in Saint-Petersburg"
+
+#: .\shop\templates\include\banner.html:4
+msgid "Как собрать игровой пк своими руками"
+msgstr "How craft game-PC?"
+
+#: .\shop\templates\include\banner.html:5
+#: .\shop\templates\include\banner.html:12
+msgid "Читать"
+msgstr "Read"
+
+#: .\shop\templates\include\banner.html:11
+msgid "Статья: \"Выгодно ли покупать дешевые смартфоны?\""
+msgstr "Article: Is it profitable buy low prices smartphones?"
+
+#: .\shop\templates\include\buttons\filter-find-button.html:7
+msgid "Найти"
+msgstr "Find"
+
+#: .\shop\templates\include\commercial.html:11
+msgid "Приобретайте товары по нашим выгодным ценам!"
+msgstr "Purchase our goods by goods prices"
+
+#: .\shop\templates\include\commercial.html:15
+msgid "Начать"
+msgstr "Begin"
+
+#: .\shop\templates\include\commercial.html:21
+msgid "Девочки, записываемся на рассылочку"
+msgstr "Hi girls, lets mailing"
+
+#: .\shop\templates\include\commercial.html:25
+msgid "Подписаться"
+msgstr "Subscribe"
+
+#: .\shop\templates\include\commercial.html:31
+msgid "У нас есть лучшие геймерские клавиатуры"
+msgstr "We have the best gaming keyboards "
+
+#: .\shop\templates\include\commercial.html:34
+#: .\shop\templates\include\commercial.html:62
+msgid "Смотреть"
+msgstr "Watch"
+
+#: .\shop\templates\include\commercial.html:52
+msgid "Старт продаж"
+msgstr "Start sales"
+
+#: .\shop\templates\include\commercial.html:61
+msgid "Новый флагман от Apple"
+msgstr "The new smartphone by Apple"
+
+#: .\shop\templates\include\commercial.html:74
+msgid "Качественный звук и исполнение"
+msgstr "High quality & performance"
+
+#: .\shop\templates\include\commercial.html:84
+msgid "Теперь в два раза наручнее"
+msgstr "More better now"
+
+#: .\shop\templates\include\footer.html:14
+msgid "Товары"
+msgstr "Goods"
+
+#: .\shop\templates\include\footer.html:28
+msgid "Товары для дома"
+msgstr "Products for home"
+
+#: .\shop\templates\include\footer.html:29
+msgid "Комплектующие для ПК"
+msgstr "PC-accessories"
+
+#: .\shop\templates\include\footer.html:30
+msgid "Развлечения"
+msgstr "Entertainments"
+
+#: .\shop\templates\include\footer.html:31
+msgid "Видео"
+msgstr "Video"
+
+#: .\shop\templates\include\footer.html:36
+#: .\shop\templates\include\header.html:238
+msgid "Партнерам"
+msgstr "For partners"
+
+#: .\shop\templates\include\footer.html:41
+#: .\shop\templates\include\header.html:221
+msgid "Контакты"
+msgstr "Contact informations"
+
+#: .\shop\templates\include\footer.html:133
+msgid "Все права защищены"
+msgstr "All right reserved"
+
+#: .\shop\templates\include\footer.html:139
+msgid "Допустимые способы оплаты"
+msgstr "Payment method"
+
+#: .\shop\templates\include\header.html:19
+msgid "Категории"
+msgstr "Categories"
+
+#: .\shop\templates\include\header.html:33
+msgid "Бытовая техника"
+msgstr "Appliences"
+
+#: .\shop\templates\include\header.html:36
+msgid "Компьютеры, ноутбуки"
+msgstr "PC & laptops"
+
+#: .\shop\templates\include\header.html:39
+msgid "Смартфоны и планшеты"
+msgstr "Smartphones & tablets"
+
+#: .\shop\templates\include\header.html:42
+msgid "Часы"
+msgstr "Watch"
+
+#: .\shop\templates\include\header.html:77
+msgid "Товара"
+msgstr "Goods"
+
+#: .\shop\templates\include\header.html:89
+msgid "Избранное"
+msgstr "Favorite"
+
+#: .\shop\templates\include\header.html:101
+msgid "Зарегистрироваться"
+msgstr "Register"
+
+#: .\shop\templates\include\header.html:106
+msgid "Вход"
+msgstr "Sign in"
+
+#: .\shop\templates\include\header.html:120
+msgid "Все категории"
+msgstr "All Categories"
+
+#: .\shop\templates\include\header.html:159
+msgid "Опции"
+msgstr "Options"
+
+#: .\shop\templates\include\header.html:173
+msgid "Товары для детей"
+msgstr "Goods for kids"
+
+#: .\shop\templates\include\header.html:174
+msgid "Профессиональные товары"
+msgstr "Professional products"
+
+#: .\shop\templates\include\header.html:189
+msgid "Помощь"
+msgstr "Help"
+
+#: .\shop\templates\include\header.html:204
+msgid "Задать вопрос администрации"
+msgstr "Question for administration"
+
+#: .\shop\templates\include\header.html:205
+msgid "Справочная информация"
+msgstr "Reference information"
+
+#: .\shop\templates\include\header.html:236
+msgid "О нас"
+msgstr "About us"
+
+#: .\shop\templates\include\header.html:237
+msgid "Контактная информация"
+msgstr "Contact info"
+
+#: .\shop\templates\include\sidebar_filters\brand-filter.html:12
+msgid "Бренды"
+msgstr "Brands"
+
+#: .\shop\templates\nocommercial-base.html:9
+#: .\shop\templates\product_type-base.html:9
+msgid "в Санкт-Петербурге и Ленинградской области"
+msgstr "in Saint-Petersburg & Leningrad region"
+
+#: .\shop\templates\shop\category_detail.html:34
+#: .\shop\templates\shop\product_detail.html:76
+#: .\shop\templates\shop\product_detail.html:144
+#: .\shop\templates\shop\product_list.html:34
+#: .\shop\templates\shop\producttype_detail.html:34
+#: .\shop\templates\shop\subcategory_detail.html:34
+msgid "шт."
+msgstr "unit"
+
+#: .\shop\templates\shop\category_detail.html:45
+msgid "На данный момент, товары категории"
+msgstr "On that moment, goods of category"
+
+#: .\shop\templates\shop\category_detail.html:45
+#: .\shop\templates\shop\subcategory_detail.html:45
+msgid "отсутствуют"
+msgstr "there are no"
+
+#: .\shop\templates\shop\product_detail.html:56
+msgid "Коротко о товаре"
+msgstr "Briefly about"
+
+#: .\shop\templates\shop\product_detail.html:59
+#: .\shop\templates\shop\product_detail.html:91
+msgid "Бренд"
+msgstr "Brand"
+
+#: .\shop\templates\shop\product_detail.html:62
+#: .\shop\templates\shop\product_detail.html:94
+msgid "Коллекция"
+msgstr "Collection"
+
+#: .\shop\templates\shop\product_detail.html:73
+msgid "Читать далее"
+msgstr "Read more"
+
+#: .\shop\templates\shop\product_detail.html:77
+msgid "Добавить в корзину"
+msgstr "Add to cart"
+
+#: .\shop\templates\shop\product_detail.html:78
+msgid "Добавить в избранное"
+msgstr "Add to favorite"
+
+#: .\shop\templates\shop\product_detail.html:81
+msgid "Описание"
+msgstr "Description"
+
+#: .\shop\templates\shop\product_detail.html:86
+msgid "Характеристики товара"
+msgstr "Characteristics"
+
+#: .\shop\templates\shop\product_detail.html:110
+msgid "Похожие товары"
+msgstr "Same products"
+
+#: .\shop\templates\shop\product_list.html:45
+msgid "Товар на сайт еще не добавлен, просим прощения за неудобства."
+msgstr "No products have been added at the moment, accept our apologies"
+
+#: .\shop\templates\shop\producttype_detail.html:45
+msgid "На данный момент, товары отсутствуют"
+msgstr "Products absent at the moment"
+
+#: .\shop\templates\shop\subcategory_detail.html:45
+msgid "На данный момент, товары подкатегории"
+msgstr "At the moment, products by subcategory"

@@ -1,3 +1,4 @@
+{% load static i18n %}
 {% load static %}
 <!-- footer start -->
 <footer class="footer">
@@ -10,7 +11,7 @@
 						<ul class="nav-footer__list">
 							<li class="nav-footer__list-item">
 									<a class="nav-footer__link nav-footer__link--dropdown" href="#">
-										Товары
+										{% trans 'Товары' %}
 										<span>
 											<svg
 	                                            xmlns="http://www.w3.org/2000/svg"
@@ -24,26 +25,38 @@
 										</span>
 									</a>
 								<ul class="footer-dropdown">
-									<li class="list-item"><a class="list-link" href="#">Товары для дома</a></li>
-									<li class="list-item"><a class="list-link" href="#">Комплектующие для ПК</a></li>
-									<li class="list-item"><a class="list-link" href="#">Развлечения</a></li>
-									<li class="list-item"><a class="list-link" href="#">Видео</a></li>
+									<li class="list-item"><a class="list-link" href="#">{% trans 'Товары для дома' %}</a></li>
+									<li class="list-item"><a class="list-link" href="#">{% trans 'Комплектующие для ПК' %}</a></li>
+									<li class="list-item"><a class="list-link" href="#">{% trans 'Развлечения' %}</a></li>
+									<li class="list-item"><a class="list-link" href="#">{% trans 'Видео' %}</a></li>
 								</ul>	
 							</li>
 							<li class="nav-footer__list-item">
 								<a class="nav-footer__link" href="#">
-									Партнерам
+									{% trans 'Партнерам' %}
 								</a>
 							</li>
 							<li class="nav-footer__list-item">
 								<a class="nav-footer__link" href="#">
-									Контакты
+									{% trans 'Контакты' %}
 								</a>
 							</li>
 							<li class="nav-footer__list-item">
-								<a class="nav-footer__link" href="#">
-									О нас
-								</a>
+								<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+			                        <input class="translate__container" name="next" type="hidden" value="{{ redirect_to }}">
+			                        <select class="translate__values" name="language">
+			                            {% get_current_language as LANGUAGE_CODE %}
+			                            {% get_available_languages as LANGUAGES %}
+			                            {% get_language_info_list for LANGUAGES as languages %}
+			                            {% for language in languages %}
+			                                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+			                                        selected{% endif %}>
+			                                    {{ language.name_local }} ({{ language.code }})
+			                                </option>
+			                            {% endfor %}
+			                        </select>
+			                        <input class="translate__button" type="submit" value="Translate">
+			                    </form>
 							</li>
 						</ul>
 					</div>
@@ -117,13 +130,13 @@
 			<div class="footer__copyright">
 				<div class="copyright">
 					<div class="copyright__item">© 2020 Doomarket</div>
-					<div class="copyright__item">Все права защищены</div>
+					<div class="copyright__item">{% trans 'Все права защищены' %}</div>
 				</div>
 			</div>
 			<div class="footer__payment">
 				<div class="payments">
 					<div class="payments__text">
-						Допустимые способы оплаты
+						{% trans 'Допустимые способы оплаты' %}
 					</div>
 					<div class="payments__icons">
 						<div class="payments__icon">
