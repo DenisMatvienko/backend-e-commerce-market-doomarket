@@ -1,0 +1,41 @@
+{% extends 'account/bases/empty-base.html' %}
+
+{% block empty_content %}
+	
+
+	{% if messages.success %}
+		{% for message in messages %}
+			<div class="success-message">
+				<p id="messages" class="message">{{ message }}</p>
+			</div>
+		{% endfor %}
+	{% else %}
+		{% for message in messages %}
+			<div class="error-message">
+				<p id="messages" class="message">{{ message }}</p>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<div class="container__sign-in">
+		<a href="{% url 'list' %}">
+			<div class="logo logo__size">doomarket</div>
+		</a>
+		<h1>Войти</h1>
+
+		<form action="" method="post">
+			{% csrf_token %}
+			<div class="tbox">
+				<input type="text" placeholder="Логин.." name="username" value="">
+			</div>
+
+			<div class="tbox">
+				<input type="password" placeholder="Пароль.." name="password" value="">
+			</div>
+			<input class="btn" type="submit" name="" value="Войти">
+		</form>
+
+		<a class="b2" href="{% url 'register' %}">Нет аккаунта? Зарегистрироваться</a>
+	</div>
+	<!-- /.container -->
+{% endblock empty_content %}

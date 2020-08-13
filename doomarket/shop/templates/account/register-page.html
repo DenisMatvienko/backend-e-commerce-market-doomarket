@@ -1,0 +1,45 @@
+{% extends 'account/bases/empty-base.html' %}
+
+{% block empty_content %}
+	<div class="container__sign-in">
+		<a href="{% url 'list' %}">
+			<div class="logo logo__size">doomarket</div>
+		</a>
+		<h1>Регистрация</h1>
+
+		<form action="" method="POST">
+			{% csrf_token %}
+			<div class="tbox">
+				{{ form.username }}
+			</div>
+
+			<div class="tbox">
+				{{ form.email }}
+			</div>
+
+			<div class="tbox">
+				{{ form.password1 }}
+			</div>
+
+			<div class="tbox">
+				{{ form.password2 }}
+			</div>
+
+			<input class="btn" type="submit" name="Create User" value="Зарегистрироваться">  
+		</form>
+		
+		{% if form.errors %}
+			<div class="error-window">{{ form.errors }}
+				<div class="message-wrapp">
+					<span class="redirect__error"> Исправьте пожалуйста ошибки, либо перейдите на</span>
+					<a href="{% url 'list' %}" class="redirect__error">главную страницу</a>	
+				</div>
+			</div>
+		{% endif %}
+		
+		<a class="b3" href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+	</div>
+	<!-- /.container -->
+{% endblock empty_content %}
+
+

@@ -1989,6 +1989,76 @@ a.nav-dropdown__dropdown-item {
 .logo__size {
   font-size: 50px; }
 
+
+.error-window {
+  background-color: #1F5089;
+  width: 500px;
+  height: 155px;
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -65px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #A6A6A6;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #1C4A7D, 0 0 40px #1C4A7D, 0 0 80px #1C4A7D;
+  padding-right: 50px;
+  text-align: center;
+  justify-content: center;
+}
+
+.error-window li {
+  list-style-type: none;
+}
+
+.message-wrapp {
+  justify-content: left;
+}
+
+.redirect__error {
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #A6A6A6;
+  margin-left: 40px;
+}
+
+.success-message {
+  position: absolute;
+  right: 200px;
+  width: 1000px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 250px;
+  padding-top: 10px;
+  border-radius: 5px;
+  background-color: #91FF83;
+  color: #035A00;
+  opacity: 0.8;
+  text-align: center;
+  box-shadow: 0 3px 10px black;
+  z-index: 10;
+}
+
+.error-message {
+  width: 1000px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 250px;
+  padding-top: 10px;
+  border-radius: 5px;
+  background-color: #FF8383;
+  color: #290C0C;
+  opacity: 0.3;
+  text-align: center;
+  box-shadow: 0 3px 10px black;
+  z-index: 10;
+}
+
+
 .b1 {
   display: block;
   width: 260px;
