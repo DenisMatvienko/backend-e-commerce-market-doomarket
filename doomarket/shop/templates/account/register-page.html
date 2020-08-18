@@ -1,4 +1,9 @@
 {% extends 'account/bases/empty-base.html' %}
+{% load static %}
+
+{% block title %}
+	Doomarket - Регистрация
+{% endblock title %}
 
 {% block empty_content %}
 	<div class="container__sign-in">
@@ -41,5 +46,10 @@
 	</div>
 	<!-- /.container -->
 {% endblock empty_content %}
+
+{% block script %}
+	<script src="{% static 'js/placeholder-register-view.js' %}"></script>
+{% endblock script %}
+
 
 

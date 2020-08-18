@@ -1679,6 +1679,7 @@ a.nav-dropdown__dropdown-item {
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
+  cursor: pointer;
 }
 
 .btn-next__img {
@@ -1691,6 +1692,7 @@ a.nav-dropdown__dropdown-item {
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
+  cursor: pointer;
 }
 
 .btn-next__img svg {
@@ -2366,6 +2368,7 @@ a.nav-dropdown__dropdown-item {
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
+  cursor: pointer;
 }
 
 .btn-next {
@@ -2378,6 +2381,7 @@ a.nav-dropdown__dropdown-item {
   border: none;
   outline: none;
   background-color: rgba(245, 245, 245, 0);
+  cursor: pointer;
 }
 
 .btn-next svg {

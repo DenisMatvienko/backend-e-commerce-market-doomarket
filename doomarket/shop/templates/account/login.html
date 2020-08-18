@@ -1,8 +1,11 @@
 {% extends 'account/bases/empty-base.html' %}
+{% load static %}
+
+{% block title %}
+	Doomarket - Вход в аккаунт
+{% endblock title %}
 
 {% block empty_content %}
-	
-
 	{% if messages.success %}
 		{% for message in messages %}
 			<div class="success-message">
@@ -36,6 +39,7 @@
 		</form>
 
 		<a class="b2" href="{% url 'register' %}">Нет аккаунта? Зарегистрироваться</a>
+		<a class="b3" href="{% url 'password_reset' %}">Забыли пароль?</a>
 	</div>
 	<!-- /.container -->
 {% endblock empty_content %}
