@@ -131,6 +131,8 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Locale files
+
 """ Locale """
 gettext = lambda s: s
 LANGUAGES = (
@@ -138,6 +140,7 @@ LANGUAGES = (
     ('en', gettext('English')),
 )
 
+""" Locale path """
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
