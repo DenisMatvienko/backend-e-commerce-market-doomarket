@@ -1,7 +1,18 @@
 {% extends 'shop/bases/nocommercial-base.html' %}
 {% load static i18n %}
-{% block product-content %}
 {% load static %}
+
+
+{% block nocommercial-title %}
+	{{ product.product_type.alias }} {{ product.name }} {% trans 'купить' %} {{ product.product_type }} {% trans 'в Санкт-Петербурге и Ленинградской области' %}
+{% endblock nocommercial-title %}
+
+{% block tabs-plate %}
+	{% include 'include/tabs_plates/tabs-product-card.html' %}
+{% endblock tabs-plate %}
+
+
+{% block product-content %}
 
 <!-- //// BLOCK.PRODUCTDETAIL //// -->
 <div class="container__details">
@@ -34,7 +45,7 @@
 							{% endfor %}
 						</div>
 					</div>
-
+					
 					<div class="slider-buttons__img">
 						<button class="btn-prev__img">
 							<svg xmlns="http://www.w3.org/2000/svg" width="100" height="11" viewBox="1.999 1 6.001 10">
@@ -74,7 +85,14 @@
 			</div>
 			<div class="buy-wish-info__container">
 				<div class="product__price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
-				<div class="product__card-button"><button class="product__btn">{% trans 'Добавить в корзину' %}</button></div>
+				<form action="{% url 'cart:cart_add' product.id %}" method="post">
+					{% csrf_token %}
+					<div class="product__card-button">
+						<button value="submit" class="product__btn">
+						{% trans 'Добавить в корзину' %}
+					</button>
+					</div>
+				</form>
 				<div class="product__wishlist-button"><button class="product__btn btn-wishlist">{% trans 'Добавить в избранное' %}</button></div>
 			</div>
 		</div>
@@ -173,5 +191,13 @@
 <!-- /.container -->
 <!-- //// BLOCK.PRODUCTDETAIL //// -->
 {% endblock product-content %}
+
+{% block nocommercial-script %}
+	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+	<script src="{% static 'js/carousel-photo-slider.js' %}"></script>
+	<script src="{% static 'js/carousel-recommendation.js' %}"></script>
+	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+{% endblock nocommercial-script %}
 
 

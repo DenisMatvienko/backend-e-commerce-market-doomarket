@@ -6,25 +6,25 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>{{ product.product_type }} {{ product.name }} {% trans 'купить' %} {{ product.product_type }} {% trans 'в Санкт-Петербурге и Ленинградской области' %}</title>
+		<title>{% block nocommercial-title %} {% endblock nocommercial-title %}</title>
 		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap&subset=cyrillic-ext" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet">
 	</head>
 <body>
 	{% include 'include/header.html' %}
-	{% include 'include/tabs_plates/tabs-product-card.html' %}
+
+	{% block tabs-plate %}
+	{% endblock tabs-plate %}
+
 	{% block product-content %}
 		
 	{% endblock product-content %}
 	{% include 'include/buttons/button-up.html' %}	
 	{% include 'include/footer.html' %}
-
-	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
-	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
-	<script src="{% static 'js/carousel-photo-slider.js' %}"></script>
-	<script src="{% static 'js/carousel-recommendation.js' %}"></script>
-	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+	
+	{% block nocommercial-script %}
+	{% endblock nocommercial-script %}
 </body>
 </html>
 

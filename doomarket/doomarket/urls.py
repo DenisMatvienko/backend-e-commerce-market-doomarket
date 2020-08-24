@@ -11,6 +11,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('accounts/', include('allauth.urls')),
+    path('cart/', include('cart.urls', namespace='cart')),
     path('', include('shop.urls')),
 
 )

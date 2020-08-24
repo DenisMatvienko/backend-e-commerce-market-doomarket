@@ -1,0 +1,88 @@
+{% extends 'shop/bases/nocommercial-base.html' %}
+{% load static i18n %}
+{% load static %}
+
+
+{% block nocommercial-title %}
+	Doomarket - Корзина товаров
+{% endblock nocommercial-title %}
+
+{% block tabs-plate %}
+	{% include 'include/tabs_plates/tabs-cart.html' %}
+{% endblock tabs-plate %}
+
+
+{% block product-content %}
+	
+	<div class="container__cart">
+		<div class="cart__wrapper">
+			<h1 class="wishlist__title">Ваша корзина</h1>
+			  <table class="cart">
+			    <thead>
+			      <tr>
+			        <th>Фото</th>
+			        <th>Продукт</th>
+			        <th>Количество</th>
+			        <th>₽/шт.</th>
+			        <th>Удалить</th>
+			        <th>Цена</th>
+			      </tr>
+			    </thead>
+			    <tbody>
+			      {% for item in cart %}
+			        {% with product=item.product %}
+			          	<tr>
+				            <td>
+				              <a href="{{ product.get_absolute_url }}">
+				                <img class="table__detail-image" src="{% if product.title_img %}{{ product.title_img.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+				              </a>
+				            </td>
+				            <td class="table__detail">
+					            <a class="table__detail-link" href="{{ product.get_absolute_url }}">
+					            	{{ product.name }}
+				            </td>
+				            <td class="table__detail">
+				            	<form action="{% url 'cart:cart_add' product.id %}" method="post">
+					            	{{ item.update_quantity_form.quantity }}
+					            	{{ item.update_quantity_form.update }}
+					            	<input type="submit" value="Добавить/Убрать">
+					            	{% csrf_token %}
+				            	</form>
+				            </td>
+				            <td class="num">{{ item.price }}₽</td>
+				            <td class="table__detail">
+				            	<a href="{% url 'cart:cart_remove' product.id %}">
+				            	<img class="rabish-cart" src="{% static 'img/icons/rabish-cart.png' %}"></a></td>
+				            <td class="num">{{ item.total_price }}₽</td>
+			          	</tr>
+			        {% endwith %}
+			        {% empty %}
+			      		<tr>
+							<td class="table__detail">Корзина пуста :(</td>
+						</tr>
+			      {% endfor %}
+
+			      <tr class="total">
+			        <td>Total</td>
+			        <td colspan="4"></td>
+			        <td class="num">{{ cart.get_total_price }}₽</td>
+			      </tr>
+			    </tbody>
+			  </table>
+			  <p class="text-right">
+			    <a href="{% url 'list' %}" class="button-cart light">Продолжить покупки</a>
+			    <a href="#" class="button-cart">
+			      Checkout
+			    </a>
+			  </p>
+		</div>
+	</div>
+{% endblock product-content %}
+
+{% block nocommercial-script %}
+	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+	<script src="{% static 'js/carousel-photo-slider.js' %}"></script>
+	<script src="{% static 'js/carousel-recommendation.js' %}"></script>
+	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+{% endblock nocommercial-script %}

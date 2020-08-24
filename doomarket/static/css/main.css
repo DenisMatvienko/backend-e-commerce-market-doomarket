@@ -1024,6 +1024,8 @@ a.nav-dropdown__dropdown-item {
 
 .card__footer {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   justify-content: center; }
 
 .card_price {
@@ -2421,6 +2423,128 @@ a.nav-dropdown__dropdown-item {
   height: 300px; }
   .bot-full li {
     margin-left: 40px; }
+
+/*cart-container start*/
+  
+.container__cart {
+  width: 100%;
+  height: 1000%;
+  background-color: #1A1A1A;
+  padding-left: 140px;
+  padding-bottom: 100px;
+}
+
+.cart__wrapper {
+  width: 1250px;
+  height: 1600px;
+  background-color: #262626;
+  box-shadow: 0 3px 10px black;
+  border-radius: 5px;
+  padding: 100px 100px;
+  overflow: scroll;
+}
+
+table.cart {
+  margin-bottom:40px;
+  margin-left: 50px;}
+
+table.cart img {
+  width:180px;
+}
+
+
+tbody {
+  margin-top: 100px;
+}
+
+tbody td.num {
+  text-align:center;
+  color: #4D4D4D;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+
+tbody td.table__detail {
+  text-align:center;
+  color: #4D4D4D;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.table__detail-link {
+  color: #4D4D4D;
+}
+
+.table__detail-link:hover {
+  transition: 0.2s color ease-in;
+  color: #1875f0;
+}
+
+.table__detail-image {
+  border-radius: 5px;
+  box-shadow: 0 3px 10px black;
+  transition: 0.2s transform ease-in;
+}
+
+.table__detail-image:hover {
+  transform: translate(-2%, -1%);
+  box-shadow: 0 3px 10px #1875f0;
+}
+
+.rabish-cart {
+  max-width: 30px;
+  height: 40px;
+}
+
+thead th, tbody tr.total {
+  width: 1000px;
+  background: #5993bb;
+  color: #ffffff;
+  box-shadow: 0 3px 10px black;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 5px;
+}
+
+.text-right {
+  text-align:right;
+}
+
+a.button-cart, input[type="submit"] {
+  color: #ffffff;
+  background:#5993bb;
+  border-radius:4px;
+  padding:10px 20px;
+  font-size:14px;
+  border:0;
+  box-shadow: 0 3px 10px black;
+}
+
+a.button-cart.light {
+  color: #262626;
+  background: #A6A6A6;
+  box-shadow: 0 3px 10px black;
+}
+
+.button-cart:hover {
+  cursor:pointer;
+  background-color: #1875f0;
+  color: #ffffff;
+  transition: 0.2s color ease-in, 0.2s background-color ease-in;
+}
+
+
+/*cart-container end*/
 
 /* Mixin to create form display of items start */
 .navigation, .info-block, .tabs {

@@ -32,13 +32,17 @@
 					</a>
 					<div class="card__footer">
 						<div class="card_price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
-						<button class="icon__cart">
-							<svg width="21" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
-								<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="1 1 20 20">
-									<path paint-order="stroke fill markers" fill-rule="evenodd" d="M7 17c-1.1 0-1.99.9-1.99 2S5.9 21 7 21 9 20.1 9 19s-.9-2-1.998-2zM1 1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2H19v-2H7.42a.247.247 0 0 1-.25-.25l.03-.12.898-1.63h7.452c.75 0 1.41-.41 1.749-1.03l3.579-6.49A1.003 1.003 0 0 0 20 3H5.21l-.94-2H1zm16 16c-1.1 0-1.989.9-1.989 2s.89 2 1.99 2 1.998-.9 1.998-2S18.1 17 17 17z"/>
+						<form action="{% url 'cart:cart_add' product.id %}" method="post">
+							{{ cart_product_form }}
+							{% csrf_token %}
+							<button value="submit" class="icon__cart">
+								<svg width="21" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
+									<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="1 1 20 20">
+										<path paint-order="stroke fill markers" fill-rule="evenodd" d="M7 17c-1.1 0-1.99.9-1.99 2S5.9 21 7 21 9 20.1 9 19s-.9-2-1.998-2zM1 1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2H19v-2H7.42a.247.247 0 0 1-.25-.25l.03-.12.898-1.63h7.452c.75 0 1.41-.41 1.749-1.03l3.579-6.49A1.003 1.003 0 0 0 20 3H5.21l-.94-2H1zm16 16c-1.1 0-1.989.9-1.989 2s.89 2 1.99 2 1.998-.9 1.998-2S18.1 17 17 17z"/>
+									</svg>
 								</svg>
-							</svg>
-						</button>
+							</button>
+						</form>
 					</div>	
 				</div>
 			{% empty %}
