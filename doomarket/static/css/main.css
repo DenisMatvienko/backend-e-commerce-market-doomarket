@@ -2522,7 +2522,7 @@ thead th, tbody tr.total {
 
 a.button-cart, input[type="submit"] {
   color: #ffffff;
-  background:#5993bb;
+  background: #5993bb;
   border-radius:4px;
   padding:10px 20px;
   font-size:14px;
@@ -2541,6 +2541,42 @@ a.button-cart.light {
   background-color: #1875f0;
   color: #ffffff;
   transition: 0.2s color ease-in, 0.2s background-color ease-in;
+}
+
+.detail-card {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #5993bb;
+  box-shadow: 0 3px 10px black;
+  height: 50px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.order-info {
+  margin-left: 350px;
+  margin-bottom: 120px;
+}
+
+.order-list {
+  list-style: none;
+}
+
+.order-list__quantity {
+  color: #1875f0;
+}
+
+.order-center {
+  margin-left: 392px;
+}
+
+.center {
+  margin-left: 295px;
 }
 
 

@@ -63,7 +63,7 @@
 			      {% endfor %}
 
 			      <tr class="total">
-			        <td>Total</td>
+			        <td>Всего, Сумма/₽</td>
 			        <td colspan="4"></td>
 			        <td class="num">{{ cart.get_total_price }}₽</td>
 			      </tr>
@@ -71,9 +71,7 @@
 			  </table>
 			  <p class="text-right">
 			    <a href="{% url 'list' %}" class="button-cart light">Продолжить покупки</a>
-			    <a href="#" class="button-cart">
-			      Checkout
-			    </a>
+			    <a href="{% url 'orders:order_create' %}" class="button-cart">Оформить заказ</a>
 			  </p>
 		</div>
 	</div>

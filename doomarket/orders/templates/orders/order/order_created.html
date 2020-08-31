@@ -1,0 +1,25 @@
+{% extends 'shop/bases/nocommercial-base.html' %}
+{% load static i18n %}
+{% load static %}
+
+
+{% block nocommercial-title %}
+	Успешное оформление заказа!
+{% endblock nocommercial-title %}
+
+{% block tabs-plate %}
+	{% include 'include/tabs_plates/tabs-ordering.html' %}
+{% endblock tabs-plate %}
+
+
+{% block product-content %}
+	
+	<div class="container__cart">
+		<div class="cart__wrapper">
+			<h1 class="wishlist__title">Оформление заказа</h1>
+				<span class="empty-info">
+					Ваш заказ, был успешно оформлен. Номер Вашего заказа: <b>{{ order.id }}</b>
+				</span>
+			</div>
+	</div>
+{% endblock product-content %}

@@ -64,9 +64,11 @@ class CategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, Subcateg
         """
             Get list of products related to category in category-detail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
         """
         object_list = Product.objects.filter(categories__slug=self.kwargs.get('slug'))
         context = super(CategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 
@@ -79,9 +81,11 @@ class SubcategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, Subca
         """
             Get list of products related to subcategory in subcategory-detail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
         """
         object_list = Product.objects.filter(subcategories__slug=self.kwargs.get('slug'))
         context = super(SubcategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 
@@ -94,9 +98,11 @@ class ProductTypeDetailView(DetailView, MultipleObjectMixin, CategoryList, Produ
         """
             Get list of products related to product-type in ProductTypeDetail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
          """
         object_list = Product.objects.filter(product_type__slug=self.kwargs.get('slug'))
         context = super(ProductTypeDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 
