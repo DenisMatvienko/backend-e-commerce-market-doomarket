@@ -70,7 +70,7 @@
 		</form>
 		<!-- /.header_serch -->
 		<div class="header_links">
-			<!-- Basket-link -->
+			<!-- cart-link -->
 			{% with total_items=cart|length %}
 				{% if cart|length > 0 %}
 					<a href="{% url 'cart:cart_detail' %}" class="header-link header-link--notify">	
@@ -100,38 +100,43 @@
 					</a>
 				{% endif %}
 			{% endwith %}
-
-			<!-- /Basket-link -->
-			<!-- WishList -->
-			<div class="header-link">
-				<span class="header-link__icon">
-					<svg class="icon-svg" width="21" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0.366 21 19.267" fill="#4d4d4d">
-						<svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="1.001 1 20 18.35">
-							<path paint-order="stroke fill markers" fill-rule="evenodd" d="M11.101 16.55l-.1.1-.102-.1C6.141 12.24 3.001 9.39 3.001 6.5 3 4.5 4.5 3 6.499 3c1.542 0 3.04.99 3.57 2.36h1.873C12.459 3.99 13.96 3 15.5 3c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.899 10.05zM15.501 1c-1.741 0-3.411.81-4.5 2.09C9.91 1.81 8.238 1 6.498 1 3.421 1 1.001 3.42 1.001 6.5c0 3.78 3.4 6.86 8.55 11.54L11 19.35l1.449-1.32c5.15-4.67 8.551-7.75 8.551-11.53 0-3.08-2.421-5.5-5.5-5.5z"/>
-						</svg>
-					</svg>
-				</span>
-				<span class="header-link__text">{% trans 'Избранное' %}</span>
-			</div>
-			<!-- /WishList -->
-			<!-- Sign in -->
-			<a href="{% url 'register' %}" class="header-link">
-				<span class="header-link__icon">
-					<svg class="icon-svg" width="17" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.001 0 16.999 17" fill="#4d4d4d">
-						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="1.001 2 15.999 16">
-							<path paint-order="stroke fill markers" fill-rule="evenodd" d="M9 11C6.33 11 1 12.34 1 15v3h16v-3c0-2.66-5.331-4-8.001-4zm0-9C6.788 2 5 3.79 5 6s1.788 4 4 4a4 4 0 0 0 4-4 4 4 0 0 0-4-4zm0 10.9c2.97 0 6.099 1.46 6.099 2.1v1.1h-12.2V15c0-.64 3.131-2.1 6.1-2.1zm0-9a2.1 2.1 0 1 1 0 4.201 2.1 2.1 0 0 1 0-4.2z"/>
-						</svg>
-					</svg>
-				</span>
-				<span class="header-link__text">{% trans 'Зарегистрироваться' %}</span>
-			</a>
-			<!-- /Sign in -->
-			<!-- Sign in -->
+			<!-- /cart-link -->
 			{% if user.is_authenticated %}
+				<!-- Sign in -->
+				<a href="{% url 'register' %}" class="header-link">
+					<span class="header-link__icon">
+						<svg class="icon-svg" width="17" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.001 0 16.999 17" fill="#4d4d4d">
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="1.001 2 15.999 16">
+								<path paint-order="stroke fill markers" fill-rule="evenodd" d="M9 11C6.33 11 1 12.34 1 15v3h16v-3c0-2.66-5.331-4-8.001-4zm0-9C6.788 2 5 3.79 5 6s1.788 4 4 4a4 4 0 0 0 4-4 4 4 0 0 0-4-4zm0 10.9c2.97 0 6.099 1.46 6.099 2.1v1.1h-12.2V15c0-.64 3.131-2.1 6.1-2.1zm0-9a2.1 2.1 0 1 1 0 4.201 2.1 2.1 0 0 1 0-4.2z"/>
+							</svg>
+						</svg>
+					</span>
+					<span class="header-link__text">{% trans 'Зарегистрироваться' %}</span>
+				</a>
+				<!-- /Sign in -->
+				<!-- Sign in -->
 				<a href="" class="header-link">
-					<span class="header-link__text">{{ user.username }}</span>
+					<span class="header-link__text">Добро пожаловать на сайт, {{ user.username }}</span>
 				</a>
 			{% else %}
+				<!-- About -->
+				<div class="header-link">
+					<span class="header-link__text">{% trans 'О нас' %}</span>
+				</div>
+				<!-- /About -->
+				<!-- Sign in -->
+				<a href="{% url 'register' %}" class="header-link">
+					<span class="header-link__icon">
+						<svg class="icon-svg" width="17" height="17" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.001 0 16.999 17" fill="#4d4d4d">
+							<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="1.001 2 15.999 16">
+								<path paint-order="stroke fill markers" fill-rule="evenodd" d="M9 11C6.33 11 1 12.34 1 15v3h16v-3c0-2.66-5.331-4-8.001-4zm0-9C6.788 2 5 3.79 5 6s1.788 4 4 4a4 4 0 0 0 4-4 4 4 0 0 0-4-4zm0 10.9c2.97 0 6.099 1.46 6.099 2.1v1.1h-12.2V15c0-.64 3.131-2.1 6.1-2.1zm0-9a2.1 2.1 0 1 1 0 4.201 2.1 2.1 0 0 1 0-4.2z"/>
+							</svg>
+						</svg>
+					</span>
+					<span class="header-link__text">{% trans 'Зарегистрироваться' %}</span>
+				</a>
+				<!-- /Sign in -->
+				<!-- Sign in -->
 				<a href="{% url 'login' %}" class="header-link">
 					<span class="header-link__text">{% trans 'Вход' %}</span>
 				</a>
