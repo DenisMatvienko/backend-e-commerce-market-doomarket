@@ -71,16 +71,36 @@
 		<!-- /.header_serch -->
 		<div class="header_links">
 			<!-- Basket-link -->
-			<a href="#" class="header-link header-link--notify">
-				<span class="header-link__icon">
-					<svg class="icon-svg" width="22" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.416 0 21.168 21" fill="#4d4d4d">
-						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="1.001 2 20.16 20">
-							<path paint-order="stroke fill markers" fill-rule="evenodd" d="M17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM5.009 20c0 1.1.892 2 1.991 2C8.101 22 9 21.1 9 20s-.9-2-2-2-1.992.9-1.992 2zM18.31 6H6.16L8.4 10.73l.13.27h7.02l2.76-5zM5.21 4H21l.16.96-3.86 7.01c-.34.62-1 1.03-1.75 1.03H8.1l-.9 1.63-.03.12c0 .14.12.25.25.25H19v2H7C5.9 17 5 16.1 5 15c0-.35.089-.68.25-.96l1.35-2.45L3 4H1V2h3.27l.94 2z">
-						</svg>
-					</svg>
-				</span>
-				<span class="header-link__text">2 {% trans 'Товара' %}</span>
-			</a>
+			{% with total_items=cart|length %}
+				{% if cart|length > 0 %}
+					<a href="{% url 'cart:cart_detail' %}" class="header-link header-link--notify">	
+						<span class="header-link__icon">
+							<svg class="icon-svg" width="22" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.416 0 21.168 21" fill="#4d4d4d">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="1.001 2 20.16 20">
+									<path paint-order="stroke fill markers" fill-rule="evenodd" d="M17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM5.009 20c0 1.1.892 2 1.991 2C8.101 22 9 21.1 9 20s-.9-2-2-2-1.992.9-1.992 2zM18.31 6H6.16L8.4 10.73l.13.27h7.02l2.76-5zM5.21 4H21l.16.96-3.86 7.01c-.34.62-1 1.03-1.75 1.03H8.1l-.9 1.63-.03.12c0 .14.12.25.25.25H19v2H7C5.9 17 5 16.1 5 15c0-.35.089-.68.25-.96l1.35-2.45L3 4H1V2h3.27l.94 2z">
+								</svg>
+							</svg>
+						</span>
+						<span class="header-link__text">
+							{{ total_items }} Това{{ total_items|pluralize:"р,ров" }}
+						</span>
+					</a>
+				{% else %}
+					<a href="{% url 'cart:cart_detail' %}" class="header-link header-link--notify">	
+						<span>
+							<svg class="icon-svg" width="22" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0.416 0 21.168 21" fill="#4d4d4d">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="21" viewBox="1.001 2 20.16 20">
+									<path paint-order="stroke fill markers" fill-rule="evenodd" d="M17 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zM5.009 20c0 1.1.892 2 1.991 2C8.101 22 9 21.1 9 20s-.9-2-2-2-1.992.9-1.992 2zM18.31 6H6.16L8.4 10.73l.13.27h7.02l2.76-5zM5.21 4H21l.16.96-3.86 7.01c-.34.62-1 1.03-1.75 1.03H8.1l-.9 1.63-.03.12c0 .14.12.25.25.25H19v2H7C5.9 17 5 16.1 5 15c0-.35.089-.68.25-.96l1.35-2.45L3 4H1V2h3.27l.94 2z">
+								</svg>
+							</svg>
+						</span>
+						<span class="header-link__text">
+							Корзина
+						</span>
+					</a>
+				{% endif %}
+			{% endwith %}
+
 			<!-- /Basket-link -->
 			<!-- WishList -->
 			<div class="header-link">
@@ -218,14 +238,12 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Задать вопрос администрации' %}</a>
 							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
 					<select class="hidden" name="" id="selectReal">
 						<option value="Помощь">Помощь</option>
-						<option value="Задать вопрос администрации">Задать вопрос администрации</option>
 						<option value="Справочная информация">Справочная информация</option>
 					</select>
 					<!-- /Скрытый select -->

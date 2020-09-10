@@ -1,7 +1,18 @@
 {% extends 'shop/bases/nocommercial-base.html' %}
 {% load static i18n %}
-{% block product-content %}
 {% load static %}
+
+
+{% block nocommercial-title %}
+	{{ product.product_type.alias }} {{ product.name }} {% trans 'купить' %} {{ product.product_type }} {% trans 'в Санкт-Петербурге и Ленинградской области' %}
+{% endblock nocommercial-title %}
+
+{% block tabs-plate %}
+	{% include 'include/tabs_plates/tabs-product-card.html' %}
+{% endblock tabs-plate %}
+
+
+{% block product-content %}
 
 <!-- //// BLOCK.PRODUCTDETAIL //// -->
 <div class="container__details">
@@ -34,7 +45,7 @@
 							{% endfor %}
 						</div>
 					</div>
-
+					
 					<div class="slider-buttons__img">
 						<button class="btn-prev__img">
 							<svg xmlns="http://www.w3.org/2000/svg" width="100" height="11" viewBox="1.999 1 6.001 10">
@@ -74,7 +85,15 @@
 			</div>
 			<div class="buy-wish-info__container">
 				<div class="product__price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
-				<div class="product__card-button"><button class="product__btn">{% trans 'Добавить в корзину' %}</button></div>
+				<form action="{% url 'cart:cart_add' product.id %}" method="post">
+					{% csrf_token %}
+					<div class="product__card-button">
+						<button value="submit" class="button-cart detail-card">
+						{% trans 'Добавить в корзину' %}
+					</button>
+					{{ cart_product_form }}
+					</div>
+				</form>
 				<div class="product__wishlist-button"><button class="product__btn btn-wishlist">{% trans 'Добавить в избранное' %}</button></div>
 			</div>
 		</div>
@@ -107,7 +126,7 @@
 	</div>
 	<div class="recommendation-container">
 		<div class="recommendation__title">
-			<span>{% trans 'Похожие товары' %}</span>
+			<span>{% trans 'Вместе с этим товаром, так же покупают' %}</span>
 		</div>
 		<div class="wrapper">
 			<div class="slider-container">
@@ -142,13 +161,17 @@
 									</a>
 									<div class="card__footer">
 										<div class="card_price">{{ product.price }} ₽/{% trans 'шт.' %}</div>
-										<button class="icon__cart">
-											<svg width="21" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
-												<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="1 1 20 20">
-													<path paint-order="stroke fill markers" fill-rule="evenodd" d="M7 17c-1.1 0-1.99.9-1.99 2S5.9 21 7 21 9 20.1 9 19s-.9-2-1.998-2zM1 1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2H19v-2H7.42a.247.247 0 0 1-.25-.25l.03-.12.898-1.63h7.452c.75 0 1.41-.41 1.749-1.03l3.579-6.49A1.003 1.003 0 0 0 20 3H5.21l-.94-2H1zm16 16c-1.1 0-1.989.9-1.989 2s.89 2 1.99 2 1.998-.9 1.998-2S18.1 17 17 17z"/>
+										<form action="{% url 'cart:cart_add' product.id %}" method="post">
+											{{ cart_product_form }}
+											{% csrf_token %}
+											<button value="submit" class="icon__cart">
+												<svg width="21" height="21" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
+													<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="1 1 20 20">
+														<path paint-order="stroke fill markers" fill-rule="evenodd" d="M7 17c-1.1 0-1.99.9-1.99 2S5.9 21 7 21 9 20.1 9 19s-.9-2-1.998-2zM1 1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2H19v-2H7.42a.247.247 0 0 1-.25-.25l.03-.12.898-1.63h7.452c.75 0 1.41-.41 1.749-1.03l3.579-6.49A1.003 1.003 0 0 0 20 3H5.21l-.94-2H1zm16 16c-1.1 0-1.989.9-1.989 2s.89 2 1.99 2 1.998-.9 1.998-2S18.1 17 17 17z"/>
+													</svg>
 												</svg>
-											</svg>
-										</button>
+											</button>
+										</form>
 									</div>	
 								</div>
 							</div>
@@ -173,5 +196,13 @@
 <!-- /.container -->
 <!-- //// BLOCK.PRODUCTDETAIL //// -->
 {% endblock product-content %}
+
+{% block nocommercial-script %}
+	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+	<script src="{% static 'js/carousel-photo-slider.js' %}"></script>
+	<script src="{% static 'js/carousel-recommendation.js' %}"></script>
+	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+{% endblock nocommercial-script %}
 
 

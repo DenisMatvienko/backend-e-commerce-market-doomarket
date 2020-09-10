@@ -1,0 +1,64 @@
+{% extends 'shop/bases/nocommercial-base.html' %}
+{% load static i18n %}
+{% load static %}
+
+
+{% block nocommercial-title %}
+	Doomarket - Оформление заказа
+{% endblock nocommercial-title %}
+
+{% block tabs-plate %}
+	{% include 'include/tabs_plates/tabs-ordering.html' %}
+{% endblock tabs-plate %}
+
+
+{% block product-content %}
+	
+	<div class="container__cart">
+		<div class="cart__wrapper">
+			<h1 class="wishlist__title center">Оформление заказа</h1>
+
+			<div class="order-info">
+			    <ul>
+			      {% for item in cart %}
+			        <li class="order-list">
+						<span class="order-list__quantity">{{ item.quantity }}x</span> 
+						<a href="{{ item.product.get_absolute_url }}" class="table__detail-link">
+							{{ item.product.name }} -
+						</a>
+						<span class="table__detail-link">{{ item.total_price }}₽</span>
+			        </li>
+			      {% endfor %}
+			    </ul>
+			    <p class="table__detail-link">Итого: {{ cart.get_total_price }}₽</p>
+			</div>
+
+			<form action="." method="post" class="order-form">
+				<div class="tbox">
+					{{ form.first_name }}
+				</div>
+				<div class="tbox">
+					{{ form.last_name }}
+				</div>
+				<div class="tbox">
+					{{ form.email }}
+				</div>
+				<div class="tbox">
+					{{ form.address }}
+				</div>
+				<div class="tbox">
+					{{ form.postal_code }}
+				</div>
+				<div class="tbox">
+					{{ form.city }}
+				</div>
+				<p><input class="btn order-center" type="submit" value="Оформить заказ"></p>
+				{% csrf_token %}
+			</form>
+		</div>
+	</div>
+{% endblock product-content %}
+
+{% block nocommercial-script %}
+	<script src="{% static 'js/placeholder/placeholder-order-create.js' %}"></script>
+{% endblock nocommercial-script %}

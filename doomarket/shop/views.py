@@ -6,6 +6,7 @@ from shop.business.filters import FiltersPropertyValuesList
 from shop.business.producttype_filters_querysets.producttype_filters_json import JsonProductTypeFilterView
 from shop.business.catalogue import CategoryList, SubcategoryList, ProductTypeList
 from shop.business.accounts import AccountsView
+from cart.forms import CartAddProductForm
 
 
 def register_page(request):
@@ -30,7 +31,13 @@ class ProductListView(ListView, CategoryList):
     """
     model = Product
     queryset = Product.objects.filter(available=True)
-    paginate_by = 40
+    paginate_by = 30
+
+    def get_context_data(self, **kwargs):
+        """ Get form  'cart_product_form' in template """
+        context = super(ProductListView, self).get_context_data(**kwargs)
+        context['cart_product_form'] = CartAddProductForm()
+        return context
 
 
 class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
@@ -41,49 +48,61 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
     model = Product
     slug_field = 'slug'
 
+    def get_context_data(self, **kwargs):
+        """ Get form  'cart_product_form' in template """
+        context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['cart_product_form'] = CartAddProductForm()
+        return context
+
 
 class CategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList):
     """ List of product which have relationship with categories. """
     model = Category
-    paginate_by = 28
+    paginate_by = 30
 
     def get_context_data(self, **kwargs):
         """
             Get list of products related to category in category-detail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
         """
         object_list = Product.objects.filter(categories__slug=self.kwargs.get('slug'))
         context = super(CategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 
 class SubcategoryDetailView(DetailView, MultipleObjectMixin, CategoryList, SubcategoryList, ProductTypeList):
     """ List of subcategory products which have relationship with categories. """
     model = Subcategory
-    paginate_by = 28
+    paginate_by = 30
 
     def get_context_data(self, **kwargs):
         """
             Get list of products related to subcategory in subcategory-detail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
         """
         object_list = Product.objects.filter(subcategories__slug=self.kwargs.get('slug'))
         context = super(SubcategoryDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 
 class ProductTypeDetailView(DetailView, MultipleObjectMixin, CategoryList, ProductTypeList, FiltersPropertyValuesList):
     """ List of product-type products which have relationship with subcategories. """
     model = ProductType
-    paginate_by = 28
+    paginate_by = 30
 
     def get_context_data(self, **kwargs):
         """
             Get list of products related to product-type in ProductTypeDetail
             Use MultipleObjectMixin and have pagination just like in ListView
+            Get form  'cart_product_form' in template
          """
         object_list = Product.objects.filter(product_type__slug=self.kwargs.get('slug'))
         context = super(ProductTypeDetailView, self).get_context_data(object_list=object_list, **kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         return context
 
 

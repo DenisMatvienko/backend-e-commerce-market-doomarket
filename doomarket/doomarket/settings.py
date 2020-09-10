@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'shop',
+    'cart',
+    'orders',
 
     'allauth',
     'allauth.account',
@@ -70,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.business.context_processors.cart',
             ],
         },
     },
@@ -169,6 +172,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'grabsomebuds27@gmail.com'
 EMAIL_HOST_PASSWORD = 'lzlfsqljjgjmwdpd'
+
+# Sessions configuration
+
+CART_SESSION_ID = 'cart'
 
 
 
