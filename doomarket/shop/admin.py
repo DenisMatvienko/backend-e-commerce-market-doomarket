@@ -1,6 +1,9 @@
 from django.contrib import admin
 from .models.product import *
 from modeltranslation.admin import TranslationAdmin
+import csv
+import datetime
+from django.http import HttpResponse
 
 
 admin.site.site_header = 'Doomarket admin'
@@ -10,6 +13,7 @@ admin.site.index_title = 'Welcome to Doomarket admin'
 
 @admin.register(ProductType)
 class ProductAdmin(TranslationAdmin):
+    """ Product type fields in admin """
     list_display = ('name', 'subcategories', 'id',)
     list_display_links = ('name',)
     list_filter = ('subcategories',)
@@ -19,6 +23,7 @@ class ProductAdmin(TranslationAdmin):
 
 @admin.register(Property)
 class PropertyAdmin(TranslationAdmin):
+    """ Properties fields in admin """
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     list_filter = ('name',)
@@ -28,6 +33,7 @@ class PropertyAdmin(TranslationAdmin):
 
 @admin.register(ProductImg)
 class ProductImgAdmin(admin.ModelAdmin):
+    """ Img of products fields in admin """
     list_display = ('name', 'image', 'product',)
     list_display_links = ('name',)
     list_filter = ('name',)
@@ -36,6 +42,7 @@ class ProductImgAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
+    """ Product fields in admin """
     list_display = ('name', 'brand', 'subcategories', 'updated', 'id',)
     list_display_links = ('name',)
     list_filter = ('brand', 'subcategories', 'updated', 'price',)
@@ -45,11 +52,13 @@ class ProductAdmin(TranslationAdmin):
 
 @admin.register(Value)
 class ProductInstancePropertyValueAdmin(TranslationAdmin):
+    """ Value fields in admin """
     list_display = ('value', 'id',)
 
 
 @admin.register(Brand, Collection)
 class DisplaysAdmin(admin.ModelAdmin):
+    """ Brand & Collections fields in admin """
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     readonly_fields = ('slug',)
@@ -57,6 +66,7 @@ class DisplaysAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class DisplaysAdmin(TranslationAdmin):
+    """ Category fields in admin """
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     readonly_fields = ('slug',)
@@ -64,6 +74,7 @@ class DisplaysAdmin(TranslationAdmin):
 
 @admin.register(Subcategory)
 class DisplaysAdmin(TranslationAdmin):
+    """ Subcategory fields in admin """
     list_display = ('name', 'id',)
     list_display_links = ('name',)
     readonly_fields = ('slug',)
