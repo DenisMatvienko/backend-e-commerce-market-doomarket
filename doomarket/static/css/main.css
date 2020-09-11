@@ -988,6 +988,19 @@ a.nav-dropdown__dropdown-item {
   line-height: 1;
   text-transform: uppercase; }
 
+.in_detail {
+  margin-top: 50px;
+}
+
+.in_detail:hover {
+  color: #fff;
+  background-color: #1875f0;
+  transform: translateY(-2px);
+  transition: 0.2s transform ease-in, 0.2s background-color ease-in;
+  box-shadow: 0 3px 10px black;
+  cursor: default;
+}
+
 .card__icon-btns {
   display: flex;
   align-items: center;
@@ -2578,6 +2591,41 @@ a.button-cart.light {
 .center {
   margin-left: 295px;
 }
+
+.copone__container {
+  width: 350px;
+  height: 160px;
+  margin-left: 50px;
+}
+
+.coupone__wrapper{
+  text-align: left;
+}
+
+.coupone__text{
+  color: #4D4D4D;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.coupone__box {
+  width: 205px;
+  height: 60px;
+  background: #4D4D4D;
+  border-radius: 10px;
+  margin: 10px 0px;
+  }
+  .coupone__box input {
+    background: none;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 90%;
+    line-height: 37px;
+    font-size: 14px;
+    color: #A6A6A6; }
 
 
 /*cart-container end*/

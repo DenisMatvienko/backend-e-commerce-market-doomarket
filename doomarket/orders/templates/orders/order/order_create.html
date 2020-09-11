@@ -19,18 +19,26 @@
 			<h1 class="wishlist__title center">Оформление заказа</h1>
 
 			<div class="order-info">
-			    <ul>
-			      {% for item in cart %}
-			        <li class="order-list">
+			<ul>
+				{% for item in cart %}
+					<li class="order-list">
 						<span class="order-list__quantity">{{ item.quantity }}x</span> 
 						<a href="{{ item.product.get_absolute_url }}" class="table__detail-link">
 							{{ item.product.name }} -
 						</a>
-						<span class="table__detail-link">{{ item.total_price }}₽</span>
-			        </li>
-			      {% endfor %}
-			    </ul>
-			    <p class="table__detail-link">Итого: {{ cart.get_total_price }}₽</p>
+						<span class="table__detail-link">{{ item.total_price|floatformat:"2" }}₽</span>
+					</li>
+				{% endfor %}
+				{% if cart.coupon %}
+					<li class="order-list">
+						{% blocktrans with code=cart.coupon.code discount=cart.coupon.discount %}
+							<span class="order-list__quantity">Промо-код: "{{ code }}", Скидка: {{ discount }}%</span> <hr> 
+						{% endblocktrans %}
+						<span class="order-list__quantity">Скидка в ₽:  -{{ cart.get_discount|floatformat:"2" }}₽</span>
+					</li>
+				{% endif %}
+			</ul>
+			    <p class="table__detail-link">Итого: {{ cart.get_total_price_after_discount|floatformat:"2" }}₽</p>
 			</div>
 
 			<form action="." method="post" class="order-form">

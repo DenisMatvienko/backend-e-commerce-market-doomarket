@@ -13,6 +13,7 @@ urlpatterns += i18n_patterns(
     path('accounts/', include('allauth.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
+    path('coupons/', include('coupons.urls', namespace='coupons')),
     path('', include('shop.urls')),
 
 )
