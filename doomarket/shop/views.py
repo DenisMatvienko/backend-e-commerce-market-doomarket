@@ -1,11 +1,13 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.list import MultipleObjectMixin
+from django.shortcuts import render, get_object_or_404
 
 from .models.product import Product, Category, Subcategory, ProductType
 from shop.business.filters import FiltersPropertyValuesList
 from shop.business.producttype_filters_querysets.producttype_filters_json import JsonProductTypeFilterView
 from shop.business.catalogue import CategoryList, SubcategoryList, ProductTypeList
 from shop.business.accounts import AccountsView
+from shop.business.recommender import Recommender
 from cart.forms import CartAddProductForm
 
 
@@ -51,7 +53,10 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
     def get_context_data(self, **kwargs):
         """ Get form  'cart_product_form' in template """
         context = super(ProductDetailView, self).get_context_data(**kwargs)
+        r = Recommender()
+        product = get_object_or_404(Product, id=3, available=True)
         context['cart_product_form'] = CartAddProductForm()
+        context['recommended_products'] = r.suggest_products_for([product], 6)
         return context
 
 
