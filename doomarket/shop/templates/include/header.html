@@ -141,9 +141,11 @@
 			</div>
 			<!-- /.header-nav__categories -->
 			<div class="header-nav__deals">
-				<a href="" class="header-nav__link">{% trans 'Коллекции' %}</a>
-				<a href="" class="header-nav__link">{% trans 'Бренды' %}</a>
-				<a href="" class="header-nav__link">{% trans 'Скидки' %}</a>
+				{% for product in view.get_category_recomendtions %}
+					<a href="{{ product.get_absolute_url }}" class="header-nav__link">
+						{{ product.name }}
+					</a>
+				{% endfor %}
 				<a href="" class="header-nav__link">{% trans 'Как заказать?' %}</a>
 			</div>
 			<!-- /.header-nav__deals -->
