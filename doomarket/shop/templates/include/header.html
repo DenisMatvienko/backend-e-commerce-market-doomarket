@@ -12,53 +12,12 @@
 			<div class="logo">doomarket</div>
 		</a>
 		<!-- /.header_logo -->
-		<form class="header_serch">
+		<form class="header_serch" action="{% url 'search' %}" method="get">
 			<div class="header_serch-input-wrapper">
-				<input class="header_serch-input" type="text" placeholder="Найти...">
-				<!-- <input class="hidden" id="SearchReal"> -->
-				<!-- Скрытый input для поисковика django, сделать потом через js как SelectReal в скрытом селекте -->
+				<input class="header_serch-input" type="text" name="q" placeholder="Найти...">
 			</div>
 			<!-- /.header_serch-input-wrapper -->
-			<div class="header_search-dropdown">
-				<div data-select class="header-select">
-					<div data-select-title class="header-select__title">{% trans 'Категории' %}
-						<div class="nav-dropdown__title-icon">
-							<svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="8"
-                                    height="5"
-                                    viewBox="0 0 8 5">
-                                    <path
-                                        d="M3.998 5L8 2.5V.104L3.998 2.62 0 0v2.5z"/>
-                                </svg>
-						</div>
-					</div>
-					<div class="header-select__dropdown hidden">
-						<div data-select-item="Бытовая" class="header-select__dropdown-item">
-							{% trans 'Бытовая техника' %}
-						</div>
-						<div data-select-item="Компьютеры" class="header-select__dropdown-item">
-							{% trans 'Компьютеры, ноутбуки' %}
-						</div>
-						<div data-select-item="Смартфоны" class="header-select__dropdown-item">
-							{% trans 'Смартфоны и планшеты' %}
-						</div>
-						<div data-select-item="Часы" class="header-select__dropdown-item">
-							{% trans 'Часы' %}
-						</div>
-					</div>
-				</div>
-			<!-- На случай если js не работает есть скрытый select -->
-			<select class="hidden" name="" id="selectReal">
-				<option value="none">Категории</option>
-				<option value="Бытовая">Бытовая техника</option>
-				<option value="Компьютеры">Компьютеры, ноутбуки</option>
-				<option value="Смартфоны">Смартфоны и планшеты</option>
-				<option value="Часы">Часы</option>
-			</select>
-			<!-- /Скрытый select -->
-			</div>
-			<!-- /.header_search-dropdown -->
+			
 			<div class="header_search-button-wrapper">
 				<button class="header_search-button" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13">

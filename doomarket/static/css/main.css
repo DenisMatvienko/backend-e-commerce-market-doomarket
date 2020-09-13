@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6, p {
   border: 2px solid #303030; }
 
 .header_serch-input-wrapper {
-  width: 278px;
+  width: 350px;
   display: flex;
   align-items: center;
   border-right: 2px solid #303030; }

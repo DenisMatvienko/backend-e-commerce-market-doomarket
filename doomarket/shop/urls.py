@@ -14,6 +14,7 @@ urlpatterns = [
     path('subcategory/<slug:slug>', views.SubcategoryDetailView.as_view(), name='product-subcategory'),
     path('product-type/<slug:slug>', views.ProductTypeDetailView.as_view(), name='product-type'),
     path('json-filter/', views.FilterProductsView.as_view(), name='json_filter'),
+    path('search/', views.Search.as_view(), name='search'),
 
     # https://docs.djangoproject.com/en/3.1/topics/auth/default/#module-django.contrib.auth.views
     path(
