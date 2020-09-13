@@ -178,6 +178,13 @@ EMAIL_HOST_PASSWORD = 'lzlfsqljjgjmwdpd'
 
 CART_SESSION_ID = 'cart'
 
+# Redis configuration
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 1
+
+
 
 
 

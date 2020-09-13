@@ -121,10 +121,11 @@
 		<div class="recommendation__title">
 			<span>{% trans 'Вместе с этим товаром, так же покупают' %}</span>
 		</div>
+		{% if recommended_products %}
 		<div class="wrapper">
 			<div class="slider-container">
 				<div class="slider-track">	
-					{% for product in view.get_product_recommendations %}
+					{% for product in recommended_products %}
 						<div class="slider-item">
 							<div class="value-cards">
 								<div class="card card__wishlist---margin">
@@ -175,6 +176,11 @@
 				</button>	
 			</div>
 		</div>
+		{% else %}
+		<div class="recommendation__title">
+			<span>{% trans 'Рекомендуемые товары на данный момент отсутствуют :(' %}</span>
+		</div>
+		{% endif %}
 	</div>
 </div>
 <!-- /.container -->
