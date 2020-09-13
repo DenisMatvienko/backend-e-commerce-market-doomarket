@@ -121,7 +121,7 @@ class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeLis
 
 class Search(ListView, CategoryList):
     """ Products Search """
-    paginate_by = 1
+    paginate_by = 30
 
     def get_queryset(self):
         return Product.objects.filter(name__icontains=self.request.GET.get('q'))
