@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.list import MultipleObjectMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 
 from .models.product import Product, Category, Subcategory, ProductType
 from shop.business.filters import FiltersPropertyValuesList
@@ -117,3 +117,16 @@ class FilterProductsView(JsonProductTypeFilterView, CategoryList, ProductTypeLis
         by filters in querysets by producttype_filters_querysets.
         Separate filters by product types is for easy manage filters
      """
+
+
+class Search(ListView, CategoryList):
+    """ Products Search """
+    paginate_by = 1
+
+    def get_queryset(self):
+        return Product.objects.filter(name__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = f"q={self.request.GET.get('q')}&"
+        return context
