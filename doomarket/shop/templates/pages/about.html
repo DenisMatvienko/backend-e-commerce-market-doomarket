@@ -1,0 +1,27 @@
+{% extends 'shop/bases/empty-base.html' %}
+{% load static i18n %}
+{% load static %}
+
+{% block title %}
+	{{ flatpage.title }}
+{% endblock title %}
+
+{% block empty_content %}
+	<div class="container__cart">
+		<a href="{% url 'list' %}">
+			<div class="logo logo__size fl-page__logo">doomarket</div>
+		</a>
+		<div class="cart__wrapper tutorial">
+			<h1 class="wishlist__title">О нас</h1>
+				<div class="tutorial__container">
+					{{ flatpage.content }}
+				</div>
+		</div>
+	</div>
+{% endblock empty_content %}
+
+{% block nocommercial-script %}
+	<script src="{% static 'libs/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
+	<script src="{% static 'js/button-up-to-top.js' %}"></script>
+{% endblock nocommercial-script %}

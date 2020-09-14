@@ -10,6 +10,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('pages/', include('django.contrib.flatpages.urls')),
     path('accounts/', include('allauth.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),

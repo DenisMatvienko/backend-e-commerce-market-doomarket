@@ -42,6 +42,11 @@ h1, h2, h3, h4, h5, h6, p {
     text-decoration: none;
     cursor: pointer; }
 
+.fl-page__logo {
+  margin-top: 100px;
+  margin-left: 500px;
+}
+
 /* Logo end */
 /* button on top start */
 .button__to-top {
@@ -690,7 +695,7 @@ a.nav-dropdown__dropdown-item {
     color: #1875f0; }
 
 .promo-section-item__img {
-  width: 145px; }
+  width: 100px; }
 
 /* Item-col with png image-headphones end */
 /* Item-col with background image in promo */
@@ -2455,6 +2460,22 @@ a.nav-dropdown__dropdown-item {
   border-radius: 5px;
   padding: 100px 100px;
   overflow: scroll;
+}
+
+.tutorial {
+  margin-top: 100px;
+}
+
+.tutorial__container {
+  margin-left: 50px;
+}
+
+.tutorial__description {
+  width: 950px;
+  word-wrap: break-word;
+  text-align: left;
+  margin-bottom: 50px;
+  color: #4D4D4D;
 }
 
 table.cart {

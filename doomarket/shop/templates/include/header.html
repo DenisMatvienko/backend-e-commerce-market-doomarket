@@ -80,7 +80,9 @@
 			{% else %}
 				<!-- About -->
 				<div class="header-link">
-					<span class="header-link__text">{% trans 'О нас' %}</span>
+					<a href="{% url 'about' %}" class="header-link">
+						<span class="header-link__text">{% trans 'О нас' %}</span>
+					</a>
 				</div>
 				<!-- /About -->
 				<!-- Sign in -->
@@ -141,10 +143,12 @@
 			</div>
 			<!-- /.header-nav__categories -->
 			<div class="header-nav__deals">
-				<a href="" class="header-nav__link">{% trans 'Коллекции' %}</a>
-				<a href="" class="header-nav__link">{% trans 'Бренды' %}</a>
-				<a href="" class="header-nav__link">{% trans 'Скидки' %}</a>
-				<a href="" class="header-nav__link">{% trans 'Как заказать?' %}</a>
+				{% for category in view.get_category_recomendtions %}
+					<a href="{{ category.get_absolute_url }}" class="header-nav__link">
+						{{ category.name }}
+					</a>
+				{% endfor %}
+				<a href="{% url 'tutorial' %}" class="header-nav__link">{% trans 'Как заказать?' %}</a>
 			</div>
 			<!-- /.header-nav__deals -->
 			<div class="header-nav__dropdowns">
@@ -202,7 +206,7 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
+							<a href="{% url 'faq' %}" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
@@ -232,9 +236,9 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
+							<a href="{% url 'about' %}" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
+							<a href="{% url 'contacts' %}" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
+							<a href="{% url 'information-for-partners' %}" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->

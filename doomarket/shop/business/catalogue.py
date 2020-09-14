@@ -9,8 +9,8 @@ class CategoryList:
         """ Get list categories on main page """
         return Category.objects.all()
 
-    def get_product_recommendations(self):
-        return Product.objects.all()[:7]
+    def get_category_recomendtions(self):
+        return Category.objects.all()[:2]
 
 
 class SubcategoryList:
