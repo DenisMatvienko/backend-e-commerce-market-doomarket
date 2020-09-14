@@ -141,9 +141,9 @@
 			</div>
 			<!-- /.header-nav__categories -->
 			<div class="header-nav__deals">
-				{% for product in view.get_category_recomendtions %}
-					<a href="{{ product.get_absolute_url }}" class="header-nav__link">
-						{{ product.name }}
+				{% for category in view.get_category_recomendtions %}
+					<a href="{{ category.get_absolute_url }}" class="header-nav__link">
+						{{ category.name }}
 					</a>
 				{% endfor %}
 				<a href="pages/tutorial" class="header-nav__link">{% trans 'Как заказать?' %}</a>
@@ -234,9 +234,9 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
-							<a href="#" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
+							<a href="pages/about/" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
+							<a href="pages/contacts/" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
+							<a href="pages/information-for-partners/" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->

@@ -25,19 +25,18 @@
 										</span>
 									</a>
 								<ul class="footer-dropdown">
-									<li class="list-item"><a class="list-link" href="#">{% trans 'Товары для дома' %}</a></li>
-									<li class="list-item"><a class="list-link" href="#">{% trans 'Комплектующие для ПК' %}</a></li>
-									<li class="list-item"><a class="list-link" href="#">{% trans 'Развлечения' %}</a></li>
-									<li class="list-item"><a class="list-link" href="#">{% trans 'Видео' %}</a></li>
+									{% for category in view.get_category_recomendtions %}
+										<li class="list-item"><a class="list-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+									{% endfor %}
 								</ul>	
 							</li>
 							<li class="nav-footer__list-item">
-								<a class="nav-footer__link" href="#">
+								<a class="nav-footer__link" href="pages/information-for-partners/">
 									{% trans 'Партнерам' %}
 								</a>
 							</li>
 							<li class="nav-footer__list-item">
-								<a class="nav-footer__link" href="#">
+								<a class="nav-footer__link" href="pages/contacts/">
 									{% trans 'Контакты' %}
 								</a>
 							</li>
@@ -63,7 +62,7 @@
 				</div>
 				<div class="footer__socials">
 					<div class="social">
-						<a href="#" class="social__item">
+						<a href="https://vk.com/dmatvienkoo" class="social__item">
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 548.358 548.358">
 							<path d="M545.451,400.298c-0.664-1.431-1.283-2.618-1.858-3.569c-9.514-17.135-27.695-38.167-54.532-63.102l-0.567-0.571
 								l-0.284-0.28l-0.287-0.287h-0.288c-12.18-11.611-19.893-19.418-23.123-23.415c-5.91-7.614-7.234-15.321-4.004-23.13
@@ -99,21 +98,13 @@
 							</svg>
 						</a>
 						<!--// VK-icon end -->
-						<a href="#" class="social__item">
+						<a href="https://www.linkedin.com/in/denis-matvienko-bb8bb81a2/" class="social__item">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 								<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
 							</svg>
 						</a>
 						<!--// Linkedin-icon end -->
-						<a href="#" class="social__item">
-							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 16.999 17">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="1 2 16 12">
-									<path paint-order="stroke fill markers" fill-rule="evenodd" d="M13 8L7 4.73v6.53L13 8zm4 4c0 1.1-.9 2-2 2H3c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h12c1.1 0 2 .9 2 2v8z"/>
-								</svg>
-							</svg>
-						</a>
-						<!--// Youtube-icon end -->
-						<a href="#" class="social__item">
+						<a href="https://www.instagram.com/matvienkoda/" class="social__item">
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 16.999 17">
 								<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="1 1 15.999 16"><path paint-order="stroke fill markers" fill-rule="evenodd" d="M12.015 3H5.93c-.885 0-1.659.277-2.156.775C3.276 4.272 3 5.046 3 5.93v6.083c0 .885.276 1.659.83 2.212.553.498 1.272.774 2.155.774h6.03c.884 0 1.659-.276 2.155-.774.554-.498.83-1.272.83-2.156V5.986c0-.884-.276-1.603-.774-2.156-.552-.553-1.272-.83-2.211-.83zm4.984 9.309c0 1.383-.482 2.586-1.327 3.428C14.827 16.58 13.619 17 12.29 17H5.709c-1.328 0-2.536-.42-3.381-1.263C1.422 14.895 1 13.692 1 12.31V5.692C1 2.925 2.872 1 5.71 1h6.642c1.389 0 2.535.481 3.38 1.324.848.842 1.268 1.984 1.268 3.368v6.617zM9 11a2 2 0 1 0 .002-4A2 2 0 0 0 9 11zm-.028 2C6.752 13 5 11.177 5 9c0-2.235 1.81-4 3.97-4S13 6.765 13 9c0 2.235-1.812 4-4.03 4zM13 6c-.564 0-1-.437-1-1 0-.562.436-1 1-1 .562 0 .999.438.999 1 0 .563-.437 1-1 1z"/>
 								</svg>

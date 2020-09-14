@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-	{{ flatpage.title}}
+	{{ flatpage.title }}
 {% endblock title %}
 
 {% block empty_content %}
@@ -12,7 +12,7 @@
 			<div class="logo logo__size fl-page__logo">doomarket</div>
 		</a>
 		<div class="cart__wrapper tutorial">
-			<h1 class="wishlist__title">Справочная информация</h1>
+			<h1 class="wishlist__title">Информация для партнеров</h1>
 				<div class="tutorial__container">
 					{{ flatpage.content }}
 				</div>
@@ -25,5 +25,3 @@
 	<script src="{% static 'js/header-select-dropdown-castom.js' %}"></script>
 	<script src="{% static 'js/button-up-to-top.js' %}"></script>
 {% endblock nocommercial-script %}
-
-
