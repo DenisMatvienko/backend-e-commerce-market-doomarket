@@ -80,7 +80,9 @@
 			{% else %}
 				<!-- About -->
 				<div class="header-link">
-					<span class="header-link__text">{% trans 'О нас' %}</span>
+					<a href="{% url 'about' %}" class="header-link">
+						<span class="header-link__text">{% trans 'О нас' %}</span>
+					</a>
 				</div>
 				<!-- /About -->
 				<!-- Sign in -->
@@ -146,7 +148,7 @@
 						{{ category.name }}
 					</a>
 				{% endfor %}
-				<a href="pages/tutorial" class="header-nav__link">{% trans 'Как заказать?' %}</a>
+				<a href="{% url 'tutorial' %}" class="header-nav__link">{% trans 'Как заказать?' %}</a>
 			</div>
 			<!-- /.header-nav__deals -->
 			<div class="header-nav__dropdowns">
@@ -204,7 +206,7 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="pages/faq" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
+							<a href="{% url 'faq' %}" class="nav-dropdown__dropdown-item">{% trans 'Справочная информация' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
@@ -234,9 +236,9 @@
 							</div>
 						</a>
 						<div class="nav-dropdown__dropdown">
-							<a href="pages/about/" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
-							<a href="pages/contacts/" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
-							<a href="pages/information-for-partners/" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
+							<a href="{% url 'about' %}" class="nav-dropdown__dropdown-item">{% trans 'О нас' %}</a>
+							<a href="{% url 'contacts' %}" class="nav-dropdown__dropdown-item">{% trans 'Контактная информация' %}</a>
+							<a href="{% url 'information-for-partners' %}" class="nav-dropdown__dropdown-item">{% trans 'Партнерам' %}</a>
 						</div>
 					</div>
 					<!-- На случай если js не работает есть скрытый select -->
