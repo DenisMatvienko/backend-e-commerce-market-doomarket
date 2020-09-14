@@ -2457,6 +2457,22 @@ a.nav-dropdown__dropdown-item {
   overflow: scroll;
 }
 
+.tutorial {
+  margin-top: 100px;
+}
+
+.tutorial__container {
+  margin-left: 50px;
+}
+
+.tutorial__description {
+  width: 950px;
+  word-wrap: break-word;
+  text-align: left;
+  margin-bottom: 50px;
+  color: #4D4D4D;
+}
+
 table.cart {
   margin-bottom:40px;
   margin-left: 50px;}
