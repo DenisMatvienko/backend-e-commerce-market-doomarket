@@ -53,9 +53,9 @@ class ProductDetailView(DetailView, CategoryList, FiltersPropertyValuesList):
     def get_context_data(self, **kwargs):
         """ Get form  'cart_product_form' in template """
         context = super(ProductDetailView, self).get_context_data(**kwargs)
+        context['cart_product_form'] = CartAddProductForm()
         r = Recommender()
         product = get_object_or_404(Product, id=3, available=True)
-        context['cart_product_form'] = CartAddProductForm()
         context['recommended_products'] = r.suggest_products_for([product], 6)
         return context
 
