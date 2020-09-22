@@ -196,19 +196,28 @@ RabbitMQ - это система обмена сообщениями между 
 
 
 
-###### Установка PostgreSQL и создание базы данных не составит существенных трудностей на Windows. Поскольку данная база данных имеет как визуальное управление базами данных pgAdmin, так и работать в ней можно и через консоль.
+###### Установка PostgreSQL и создание базы данных не составит существенных трудностей на Windows. Работа в pgAdmin, так же понятна интуитивно. Опишем установку и создании бд ограничиваясь Linux Bash и терминалом Windows 
 ##### Поэтому продемонстрируем только установку в консоли Linux:
-- Установка:
-  + ```sudo apt-get install postgresql pgadmin3 ```
+- Установка и работа в Linux Bash:
+  + `sudo apt-get install postgresql pgadmin3 `
 - Среда PostgreSQL:
-  + ```sudo	-u postgres psql ```
+  + `sudo	-u postgres psql `
 - Смена пароля для user-а postgres:
-  + ```postgres=# \password```
+  + `postgres=# \password`
 - Создание базы данных:
-  + ```postgres=# CREATE DATABASE name_your_database```
+  + `postgres=# CREATE DATABASE name_your_database`
 - Просмотреть созданные базы данных:
-  + ```postgres=# \l```
-
+  + `postgres=# \l`
+  
+- Установка и работа в терминале Windows
+  + <a href="https://www.postgresql.org/download/windows/">Скачайте инсталлер для Windows</a>
+  + `win+R`, открываем терминал `cmd`
+  + Копируем путь из папки `PostgreSQL`, директории `bin`, с файлом `psql.exe`
+  + `cd C:\Program Files\PostgreSQL\10\bin`
+  + Вводим команду  открытия среды PostgreSQL: `psql -U postgres -h localhost`
+  + Все дальнейшие <a href="https://www.oslogic.ru/knowledge/598/shpargalka-po-osnovnym-komandam-postgresql/">команды</a> используются так же. Для подробной информации введите `help` в среде PostgreSQL для помощи по командам
+  
+##### В каталоге проекта присутствует дамп базы данных проекта. Файл `database_dump.sql`
 ##
 
 ### Getting started/Использование
